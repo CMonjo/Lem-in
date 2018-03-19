@@ -5,7 +5,7 @@
 ** input
 */
 
-#include "main.h"
+#include "lemin.h"
 
 /* PSEUDO CODE DECRIVAnT LA GESTION D'ERREUR + GESTION D'ERREUR AVEC PRINTF
 

@@ -5,8 +5,7 @@
 ** struct inits
 */
 
-#include "../../include/lemin.h"
-#include "../../include/my.h"
+#include "lemin.h"
 
 room_t *create_room(char *name, pos_t pos)
 {
@@ -20,7 +19,7 @@ room_t *create_room(char *name, pos_t pos)
 	return (room);
 }
 
-int	connect_room_to_room(room_t *fromRoom, room_t *toRoom)
+int connect_room_to_room(room_t *fromRoom, room_t *toRoom)
 {
 	connects_t *link = (connects_t*)malloc(sizeof(connects_t));
 

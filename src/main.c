@@ -5,18 +5,13 @@
 ** Main
 */
 
-#include "main.h"
+#include "lemin.h"
 
 int main(int ac, char **av)
 {
-	anthill_t *anthill;
-
 	(void)av;
 	if (ac != 1)
 		return (84);
-	anthill = manage_input();
-	if (!anthill)
-		return (84);
-	free_anthill(anthill);
+	create_map();
 	return (0);
 }

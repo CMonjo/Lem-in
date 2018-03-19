@@ -5,9 +5,9 @@
 ** input
 */
 
-#include "main.h"
+#include "lemin.h"
 
-int fill_rooms(room_t *room, char **input)
+int create_rooms(room_t **room, char **input)
 {
 	char **info;
 	int i = 2;
@@ -22,20 +22,21 @@ int fill_rooms(room_t *room, char **input)
 	return (i);
 }
 
-void fill_tunnels(room_t *room, char **input, int i)
+void link_rooms(room_t **room, char **input, int i)
 {
 	char **info;
 
 	for (; input[i + 1]; i++) {
 		if (input[i][0] != '#') {
 			info = str_to_array(input[i], '-');
+			info = info;
+			room = room;
 		}
 	}
 }
 
-void fill_anthill(room_t *room, char **input)
+void connect_rooms(char **input)
 {
-	int ants = my_getnbr(input[0]);
 	int nbr_rooms = 0;
 	room_t **room;
 	int i;
@@ -43,20 +44,19 @@ void fill_anthill(room_t *room, char **input)
 	for (int j = 2; my_streqstr(input[j - 2], "##end") == 0; j++)
 		nbr_rooms += (input[j][0] != '#') ? 1 : 0;
 	room = malloc(sizeof(room_t *) * nbr_rooms);
-	i = fill_rooms(room, input);
-	fill_tunnels(room, input, i);
+	i = create_rooms(room, input);
+	link_rooms(room, input, i);
 }
 
-anthill_t *manage_input(void)
+void create_map(void)
 {
 	char *file = my_read("input");
 	char **input;
 
-	if (!file)
-		return (NULL);
+	// if (!file)
+	// 	return (NULL);
 	input = str_to_array(file, '\n');
-	if (!input || verif_file(input) == 84)
-		return (NULL);
-	fill_anthill(input);
-	return (anthill);
+	// if (!input || verif_file(input) == 84)
+	// 	return (NULL);
+	connect_rooms(input);
 }

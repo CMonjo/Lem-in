@@ -11,11 +11,10 @@ CFLAGS	=	-Wextra -W -Wall -I ./include/
 
 LIB	=	-L lib/my/ -lmy -g3
 
-SRC	=	src/main.c		\
-		src/input.c		\
-		src/error_handling.c	\
-		src/free.c
-
+SRC	=	src/main.c			\
+		src/map/input.c			\
+		src/map/error_handling.c	\
+		src/map/struct_inits.c
 OBJ	=	$(SRC:.c=.o)
 
 NAME	=	lem_in
