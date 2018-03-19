@@ -7,7 +7,7 @@
 
 #include <stdlib.h>
 
-int my_strlen(char const *str)
+int my_str_len(char const *str)
 {
 	int i = 0;
 
@@ -21,7 +21,7 @@ int my_strlen(char const *str)
 
 char *my_strcat(char *str1, char *str2)
 {
-	int len = my_strlen(str1) + my_strlen(str2) + 1;
+	int len = my_str_len(str1) + my_str_len(str2) + 1;
 	char *dest = malloc(sizeof(char) * len);
 	int i = 0;
 	int j = 0;
