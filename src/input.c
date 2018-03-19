@@ -55,8 +55,8 @@ anthill_t *manage_input(void)
 	if (!file)
 		return (NULL);
 	input = str_to_array(file, '\n');
-	//if (!input || verif_file(input) == 84)
-		//return (NULL);
+	if (!input || verif_file(input) == 84)
+		return (NULL);
 	fill_anthill(input);
 	return (anthill);
 }
