@@ -36,8 +36,9 @@ anthill_t *manage_input(void)
 	if (!file)
 		return (NULL);
 	input = str_to_array(file, '\n');
-	//if (!input || verif_file(input) == 84)
-		//return (NULL);
+	if (!input || verif_file(input) == 84)
+		return (NULL);
+	printf("%s\n", "le fichier est valide");
 	anthill = malloc(sizeof(anthill_t));
 	if (!anthill)
 		return (NULL);
