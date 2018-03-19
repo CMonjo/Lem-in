@@ -37,4 +37,9 @@ struct pos_s {
 	int	y;
 };
 
+typedef struct room_s {
+	char *name;
+	pos_t pos;
+} room_t;
+
 #endif /* LEMIN_H_ */

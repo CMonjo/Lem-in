@@ -9,11 +9,12 @@ CC	=	gcc
 
 CFLAGS	=	-Wextra -W -Wall -I ./include/
 
-LIB	=	-L lib/my/ -lmy
+LIB	=	-L lib/my/ -lmy -g3
 
-SRC	=	src/main.c	\
-		src/input.c	\
-		src/error_handling.c
+SRC	=	src/main.c		\
+		src/input.c		\
+		src/error_handling.c	\
+		src/free.c
 
 OBJ	=	$(SRC:.c=.o)
 

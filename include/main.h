@@ -27,18 +27,6 @@
 	#include "my.h"
 	#include "printf.h"
 
-	typedef struct room_s {
-		char *name;
-		int x;
-		int y;
-	} room_t;
-
-	typedef struct anthill_s {
-		int ants;
-		room_t *room;
-		char **tunnels;
-	} anthill_t;
-
 	anthill_t *manage_input();
 	int verif_file(char **file);
 #endif

@@ -7,40 +7,56 @@
 
 #include "main.h"
 
-void fill_anthill(anthill_t *anthill, char **input)
+int fill_rooms(room_t *room, char **input)
 {
 	char **info;
 	int i = 2;
 
-	anthill->room = malloc(sizeof(room_t) * 8);
-	anthill->ants = my_getnbr(input[0]);
-	for (; my_streqstr(input[i - 2], "##end") == 0; i++) {
+	for (int j = 0; my_streqstr(input[i - 2], "##end") == 0; i++, j++) {
 		if (input[i][0] != '#') {
 			info = str_to_array(input[i], ' ');
-			anthill->room[i - 2].name = info[0];
-			anthill->room[i - 2].x = my_getnbr(info[1]);
-			anthill->room[i - 2].y = my_getnbr(info[2]);
+			room[j] = create_room(info[0],
+			(pos_t){my_getnbr(info[1]), my_getnbr(info[2])});
 		}
-	} for (; input[i]; i++) {
-		i = i;
-		//printf("%s\n", input[i]);
 	}
+	return (i);
+}
+
+void fill_tunnels(room_t *room, char **input, int i)
+{
+	char **info;
+
+	for (; input[i + 1]; i++) {
+		if (input[i][0] != '#') {
+			info = str_to_array(input[i], '-');
+		}
+	}
+}
+
+void fill_anthill(room_t *room, char **input)
+{
+	int ants = my_getnbr(input[0]);
+	int nbr_rooms = 0;
+	room_t **room;
+	int i;
+
+	for (int j = 2; my_streqstr(input[j - 2], "##end") == 0; j++)
+		nbr_rooms += (input[j][0] != '#') ? 1 : 0;
+	room = malloc(sizeof(room_t *) * nbr_rooms);
+	i = fill_rooms(room, input);
+	fill_tunnels(room, input, i);
 }
 
 anthill_t *manage_input(void)
 {
 	char *file = my_read("input");
 	char **input;
-	anthill_t *anthill;
 
 	if (!file)
 		return (NULL);
 	input = str_to_array(file, '\n');
 	//if (!input || verif_file(input) == 84)
 		//return (NULL);
-	anthill = malloc(sizeof(anthill_t));
-	if (!anthill)
-		return (NULL);
-	fill_anthill(anthill, input);
+	fill_anthill(input);
 	return (anthill);
 }

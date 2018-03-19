@@ -17,5 +17,6 @@ int main(int ac, char **av)
 	anthill = manage_input();
 	if (!anthill)
 		return (84);
+	free_anthill(anthill);
 	return (0);
 }
