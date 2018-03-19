@@ -36,8 +36,7 @@
 	typedef struct anthill_s {
 		int ants;
 		room_t *room;
-		int nbr_links;
-		int **link;
+		char **tunnels;
 	} anthill_t;
 
 	anthill_t *manage_input();
