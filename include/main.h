@@ -40,5 +40,5 @@
 	} anthill_t;
 
 	anthill_t *manage_input();
-	int verif_file(anthill_t *anthill, char **file);
+	int verif_file(char **file);
 #endif
