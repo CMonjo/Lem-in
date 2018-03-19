@@ -1,19 +1,21 @@
 /*
-** EPITECH PROJECT, =pdate=
-** Project =pname=
+** EPITECH PROJECT, 2017
+** Project lemin
 ** File description:
-** Main file
+** Main
 */
 
 #include "main.h"
 
-int main()
+int main(int ac, char **av)
 {
-	//MAIN INCLUDE ADD ALL .H//
-	int i = 19;
-	char *str = "Hello world !";
+	anthill_t *anthill;
 
-	my_printf("%s\nI'm %d y.o", str, i);
-	my_putchar('\n');
+	(void)av;
+	if (ac != 1)
+		return (84);
+	anthill = manage_input();
+	if (!anthill)
+		return (84);
 	return (0);
 }

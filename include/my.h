@@ -8,6 +8,10 @@
 #ifndef __MY_H__
 #define __MY_H__
 
+char *my_read(char *path);
+
+char **str_to_array(char *str, char c);
+
 char *get_next_line(int fd);
 
 int	my_printf(char *, ...);
@@ -68,7 +72,7 @@ int	my_showstr(char const*);
 
 int	my_showmem(char const*, int);
 
-char	*my_strcat(char*, char const*);
+char	*my_strcat(char *, char *);
 
 char	*my_strncat(char*, char const*, int);
 

@@ -1,33 +1,43 @@
 /*
-** EPITECH PROJECT, 2018
-** task02
+** EPITECH PROJECT, 2017
+** strcat
 ** File description:
-** str cat
+** task 2
 */
 
-#include <stdio.h>
 #include <stdlib.h>
 
-int	my_strlen(char const*);
-char *my_calloc(int);
-
-char *my_strcat(char *dest, char *src)
+int my_strlen(char const *str)
 {
-	char *newdest = NULL;
+	int i = 0;
 
-	if (src == NULL)
-		return (dest);
-	newdest = my_calloc(my_strlen(dest)+my_strlen(src)+1);
-	if (dest != NULL) {
-		for (int i = 0; newdest != NULL && dest[i] != '\0'; i++)
-			newdest[i] = dest[i];
-		free(dest);
+	if (str == NULL)
+		return (0);
+	while (str[i] != '\0') {
+		i += 1;
 	}
-	for (int i = 0; newdest != NULL && src[i] != '\0'; i++)
-		newdest[my_strlen(newdest)] = src[i];
-	dest = my_calloc(my_strlen(newdest)+1);
-	for (int i = 0; dest != NULL && newdest[i] != '\0'; i++)
-		dest[i] = newdest[i];
-	free(newdest);
+	return (i);
+}
+
+char *my_strcat(char *str1, char *str2)
+{
+	int len = my_strlen(str1) + my_strlen(str2) + 1;
+	char *dest = malloc(sizeof(char) * len);
+	int i = 0;
+	int j = 0;
+
+	if (!dest)
+		return (NULL);
+	while (str1[i] != '\0') {
+		dest[i] = str1[i];
+		i ++;
+	}
+	while (str2[j] != '\0') {
+		dest[i] = str2[j];
+		i ++;
+		j ++;
+	}
+	dest[i] = '\0';
+	free(str1);
 	return (dest);
 }
