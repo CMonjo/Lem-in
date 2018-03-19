@@ -30,7 +30,8 @@ anthill_t *manage_input(void)
 	anthill_t *anthill;
 
 	if (!file)
-		input = str_to_array(file, '\n');
+		return (NULL);
+	input = str_to_array(file, '\n');
 	if (!input || verif_file(input) == 84)
 		return (NULL);
 	anthill = malloc(sizeof(anthill_t));
