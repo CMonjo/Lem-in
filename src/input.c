@@ -10,17 +10,20 @@
 void fill_anthill(anthill_t *anthill, char **input)
 {
 	char **info;
-	anthill->room = malloc(sizeof(room_t) * 8);
+	int i = 2;
 
+	anthill->room = malloc(sizeof(room_t) * 8);
 	anthill->ants = my_getnbr(input[0]);
-	for (int i = 2; my_streqstr(input[i], "##END") == 0; i++) {
-		printf("%d\n", i);
+	for (; my_streqstr(input[i - 2], "##end") == 0; i++) {
 		if (input[i][0] != '#') {
 			info = str_to_array(input[i], ' ');
 			anthill->room[i - 2].name = info[0];
 			anthill->room[i - 2].x = my_getnbr(info[1]);
 			anthill->room[i - 2].y = my_getnbr(info[2]);
 		}
+	} for (; input[i]; i++) {
+		i = i;
+		//printf("%s\n", input[i]);
 	}
 }
 
@@ -33,8 +36,8 @@ anthill_t *manage_input(void)
 	if (!file)
 		return (NULL);
 	input = str_to_array(file, '\n');
-	if (!input || verif_file(input) == 84)
-		return (NULL);
+	//if (!input || verif_file(input) == 84)
+		//return (NULL);
 	anthill = malloc(sizeof(anthill_t));
 	if (!anthill)
 		return (NULL);
