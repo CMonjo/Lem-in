@@ -5,6 +5,8 @@
 ## lib maker :o
 ##
 
+CC	=	gcc
+
 SRC	=	$(wildcard *.c)
 
 OBJ	=	$(SRC:.c=.o)
