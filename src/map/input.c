@@ -59,6 +59,6 @@ void create_map(void)
 	// 	return (NULL);
 	input = str_to_array(file, '\n');
 	if (!input || verif_file(input) == 84)
-		return (NULL);
+		/*return (NULL);*/return;
 	connect_rooms(input);
 }
