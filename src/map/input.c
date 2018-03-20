@@ -9,15 +9,17 @@
 
 int create_rooms(room_t **room, char **input)
 {
-	char **info;
-	int i = 2;
+	int i = 1;
+	char **info = str_to_array(input[i], ' ');
 
-	for (int j = 0; my_streqstr(input[i - 2], "##end") == 0; i++, j++) {
+	for (int j = 0; input[i][0] == '#' ||
+	(input[i][0] != '#' && info[1] && info[2]); i++) {
 		if (input[i][0] != '#') {
-			info = str_to_array(input[i], ' ');
 			room[j] = create_room(info[0],
 			(pos_t){my_getnbr(info[1]), my_getnbr(info[2])});
+			j++;
 		}
+		info = str_to_array(input[i + 1], ' ');
 	}
 	return (i);
 }
@@ -56,7 +58,7 @@ void create_map(void)
 	// if (!file)
 	// 	return (NULL);
 	input = str_to_array(file, '\n');
-	// if (!input || verif_file(input) == 84)
-	// 	return (NULL);
+	if (!input || verif_file(input) == 84)
+		return (NULL);
 	connect_rooms(input);
 }
