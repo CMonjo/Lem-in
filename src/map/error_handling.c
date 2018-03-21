@@ -54,41 +54,6 @@ void create_file_element_file(file_t **file, int x, int y, char *name)
 	*file = new;
 }
 
-int verif_room_propriety(file_t *file, char **input, int i)
-{
-	int j = 0;
-	char *name = malloc(sizeof(char) * 1000);
-	char *x = malloc(sizeof(char) * 1000);
-	char *y = malloc(sizeof(char) * 1000);
-
-	for (;input[i][j] != '\0'; j++)
-		if (input[i][j] == '-')
-			return (0);
-	for (j = 0; input[i][j] != ' '; j++) {
-		name[j] = input[i][j];
-		printf("1er for : input[%d][%d] = %c\n", i, j, input[i][j]);
-		if (input[i][j] == '\0')
-			return (84);
-	}
-	for(; input[i][j] == ' '; j++);
-	for (int f = 0; input[i][j] != ' '; j++, f++) {
-		x[f] = input[i][j];
-		printf("2e for : input[%d][%d] = %c\n", i, j, input[i][j]);
-		if (input[i][j] < '0' || input[i][j] > '9' || input[i][j] == '\0')
-			return (84);
-	}
-	for(; input[i][j] == ' '; j++);
-	for (int f = 0; input[i][j] != ' ' && input[i][j] != '\0'; f++, j++) {
-		y[f] = input[i][j];
-		printf("3e for : input[%d][%d] = %c\n", i, j, input[i][j]);
-		if (input[i][j] < '0' || input[i][j] > '9')
-			return (84);
-	}
-	printf("le nom de la room est %s, son x = %s et son y = %s\n", name, x, y);
-	create_file_element_file(&file, my_getnbr(x), my_getnbr(y), name);
-	return (0);
-}
-
 int parsing_file_input(file_t *file, char **input)
 {
 	int i = 1;
@@ -104,7 +69,7 @@ int parsing_file_input(file_t *file, char **input)
 			// STOCKER SI TROUVER
 		}
 		else
-			if (verif_room_propriety(file, input, i) == 84)
+			if (verif_room_name(file, input, i) == 84)
 				return (84);
 	}
 	printf("start %d end %d\n", start, end);

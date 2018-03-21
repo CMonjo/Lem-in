@@ -14,7 +14,9 @@ LIB	=	-L lib/my/ -lmy
 SRC	=	src/main.c			\
 		src/map/input.c			\
 		src/map/error_handling.c	\
-		src/map/struct_inits.c
+		src/map/struct_inits.c		\
+		src/map/verif_name_x_y.c
+
 OBJ	=	$(SRC:.c=.o)
 
 NAME	=	lem_in

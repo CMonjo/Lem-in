@@ -47,6 +47,8 @@
 		file_t	*next;
 	};
 
+	void create_file_element_file(file_t **file, int x, int y, char *name);
+	int verif_room_name(file_t *file, char **input, int i);
 	int connect_room_to_room(room_t *fromRoom, room_t *toRoom);
 	room_t *create_room(char *name, pos_t pos);
 	void create_map();
