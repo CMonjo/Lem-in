@@ -37,15 +37,27 @@ void link_rooms(room_t **room, char **input, int i)
 	}
 }
 
+int count_rooms(char **input)
+{
+	int i = 1;
+	char **info = str_to_array(input[i], ' ');
+	int rooms = 0;
+
+	for (; input[i][0] == '#' ||
+	(input[i][0] != '#' && info[1] && info[2]); i++) {
+		if (input[i][0] != '#')
+		rooms += 1;
+		info = str_to_array(input[i + 1], ' ');
+	}
+	return (rooms);
+}
+
 void connect_rooms(char **input)
 {
-	int nbr_rooms = 0;
 	room_t **room;
 	int i;
 
-	for (int j = 2; my_streqstr(input[j - 2], "##end") == 0; j++)
-		nbr_rooms += (input[j][0] != '#') ? 1 : 0;
-	room = malloc(sizeof(room_t *) * nbr_rooms);
+	room = malloc(sizeof(room_t *) * count_rooms(input));
 	i = create_rooms(room, input);
 	link_rooms(room, input, i);
 }
