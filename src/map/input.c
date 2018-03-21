@@ -67,10 +67,12 @@ void create_map(void)
 	char *file = my_read("input");
 	char **input;
 
-	// if (!file)
-	// 	return (NULL);
+	if (!file)
+		return;
 	input = str_to_array(file, '\n');
-	if (!input || verif_file(input) == 84)
-		/*return (NULL);*/return;
+	if (!input || verif_file(input) == 84) {
+		my_printf("Error verif file\n");
+		return;
+	}
 	connect_rooms(input);
 }

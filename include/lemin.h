@@ -23,6 +23,7 @@
 	typedef struct connection_s	connects_t;
 	typedef struct room_s		room_t;
 	typedef struct pos_s		pos_t;
+	typedef struct file_s		file_t;
 
 	struct connection_s {
 		room_t		*room;
@@ -38,6 +39,12 @@
 		char		*name;
 		pos_t		pos;
 		connects_t	*links;
+	};
+
+	struct file_s {
+		char	*name;
+		pos_t	pos;
+		file_t	*next;
 	};
 
 	int connect_room_to_room(room_t *fromRoom, room_t *toRoom);

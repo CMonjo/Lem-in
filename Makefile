@@ -7,9 +7,9 @@
 
 CC	=	gcc
 
-CFLAGS	=	-Wextra -W -Wall -I ./include/
+CFLAGS	=	-Wextra -W -Wall -I ./include/ -g3
 
-LIB	=	-L lib/my/ -lmy -g3
+LIB	=	-L lib/my/ -lmy
 
 SRC	=	src/main.c			\
 		src/map/input.c			\
