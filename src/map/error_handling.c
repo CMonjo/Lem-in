@@ -72,7 +72,7 @@ int parsing_file_input(file_t *file, char **input)
 			if (verif_room_name(file, input, i) == 84)
 				return (84);
 	}
-	printf("start %d end %d\n", start, end);
+	//printf("start %d end %d\n", start, end);
 	if (start != 1 || end != 1)
 		return (84);
 	return (0);
