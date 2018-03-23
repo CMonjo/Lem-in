@@ -5,8 +5,7 @@
 ** read
 */
 
-#include <stdio.h>
-#include "../../include/main.h"
+#include "../../include/lemin.h"
 
 char *my_read(char *path)
 {

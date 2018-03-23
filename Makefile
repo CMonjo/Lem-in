@@ -7,13 +7,15 @@
 
 CC	=	gcc
 
-CFLAGS	=	-Wextra -W -Wall -I ./include/
+CFLAGS	=	-Wextra -W -Wall -I ./include/ -g3
 
 LIB	=	-L lib/my/ -lmy
 
-SRC	=	src/main.c	\
-		src/input.c	\
-		src/error_handling.c
+SRC	=	src/main.c			\
+		src/map/input.c			\
+		src/map/error_handling.c	\
+		src/map/struct_inits.c		\
+		src/map/verif_name_x_y.c
 
 OBJ	=	$(SRC:.c=.o)
 
