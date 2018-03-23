@@ -20,6 +20,13 @@
 typedef struct connection_s	connects_t;
 typedef struct room_s		room_t;
 typedef struct pos_s		pos_t;
+typedef struct path_s		path_t;
+
+typedef enum room_type_e {
+	case START,
+	case MIDDLE,
+	case END
+}room_type_e;
 
 struct connection_s {
 	room_t		*room;
@@ -27,14 +34,22 @@ struct connection_s {
 };
 
 struct room_s {
+	int			occuped;
 	char			*name;
+
 	pos_t		pos;
+	int			nblinks;
 	connects_t	*links;
 };
 
 struct pos_s {
 	int	x;
 	int	y;
+};
+
+struct path_s {
+	room_t	*room;
+	path_t	*next;
 };
 
 #endif /* LEMIN_H_ */

@@ -17,6 +17,8 @@ room_t *create_room(char *name, pos_t pos)
 	room->name = name;
 	room->pos = pos;
 	room->links = NULL;
+	room->nblinks = 0;
+	room->occuped = 0;
 	return (room);
 }
 
@@ -29,6 +31,7 @@ int	connect_room_to_room(room_t *fromRoom, room_t *toRoom)
 	link->next = fromRoom->links;
 	link->room = toRoom;
 	fromRoom->links = link;
+	fromRoom->nblinks += 1;
 	if (connect_room_to_room(toRoom, fromRoom))
 		return (1);
 	else
