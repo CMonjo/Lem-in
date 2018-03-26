@@ -8,9 +8,9 @@
 #include "../../include/lemin.h"
 #include "../../include/my.h"
 
-room_t	*get_first_unused_room_from_room(room_t *fromRoom)
+room_t	*get_first_unused_room_from_room(room_t *from_room)
 {
-	connects_t *_tmp = fromRoom->links;
+	connects_t *_tmp = from_room->links;
 
 	while (_tmp != NULL) {
 		if (!_tmp->room->occuped)

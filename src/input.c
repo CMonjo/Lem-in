@@ -31,8 +31,8 @@ void link_rooms(room_t **room, char **input, int i)
 	for (; input[i + 1]; i++) {
 		if (input[i][0] != '#') {
 			info = str_to_array(input[i], '-');
-			info = info;
-			room = room;
+			(void)info;
+			(void)room;
 		}
 	}
 }

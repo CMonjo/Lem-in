@@ -22,17 +22,17 @@ room_t *create_room(char *name, pos_t pos)
 	return (room);
 }
 
-int	connect_room_to_room(room_t *fromRoom, room_t *toRoom)
+int	connect_room_to_room(room_t *from_room, room_t *to_room)
 {
 	connects_t *link = (connects_t*)malloc(sizeof(connects_t));
 
 	if (link == NULL)
 		return (0);
-	link->next = fromRoom->links;
-	link->room = toRoom;
-	fromRoom->links = link;
-	fromRoom->nblinks += 1;
-	if (connect_room_to_room(toRoom, fromRoom))
+	link->next = from_room->links;
+	link->room = to_room;
+	from_room->links = link;
+	from_room->nblinks += 1;
+	if (connect_room_to_room(to_room, from_room))
 		return (1);
 	else
 		return (0);
