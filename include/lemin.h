@@ -23,12 +23,13 @@ typedef struct room_s		room_t;
 typedef struct pos_s		pos_t;
 typedef struct path_s		path_t;
 typedef struct file_s		file_t;
+typedef enum type_s		type_t;
 
-typedef enum room_type_e {
+enum type_s {
 	START,
 	MIDDLE,
 	END
-}room_type_e;
+};
 
 struct connection_s {
 	room_t		*room;
@@ -50,6 +51,7 @@ struct room_s {
 
 struct file_s {
 	char	*name;
+	type_t type;
 	pos_t	pos;
 	file_t	*next;
 };
@@ -69,12 +71,12 @@ int move_j(char **input, int i, int j);
 char *recup_name(char **input, int i, int j, char *name);
 int recup_x(char **input, int i, int j);
 int recup_y(char **input, int i, int j);
-int verif_room_name(file_t **file, char **input, int i);
+int verif_room_name(file_t **file, char **input, int i, int enum_type);
 room_t *create_room(char *name, pos_t pos);
 int	connect_room_to_room(room_t *from_room, room_t *to_room);
 room_t	*get_first_unused_room_from_room(room_t *from_room);
 int parsing_file_input(file_t **file, char **input);
-void create_file_element_file(file_t **file, pos_t pos, char *name);
+void create_file_element(file_t **file, pos_t pos, char *name, int enum_type);
 int compare_names(file_t *file, char *name);
 int compare_positions(file_t *file, int x, int y);
 void print_link(file_t *file);
