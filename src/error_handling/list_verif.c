@@ -44,12 +44,12 @@ int compare_names(file_t *file, char *name)
 	return (0);
 }
 
-void create_file_element_file(file_t **file, int x, int y, char *name)
+void create_file_element_file(file_t **file, pos_t pos, char *name)
 {
 	file_t *new = malloc(sizeof(file_t));
 
 	new->name = name;
-	new->pos = (pos_t){x, y};
+	new->pos = pos;
 	new->next = *file;
 	*file = new;
 }

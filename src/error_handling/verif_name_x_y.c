@@ -56,7 +56,7 @@ int recup_y(char **input, int i, int j)
 	return (my_getnbr(ya));
 }
 
-int verif_room_name(file_t *file, char **input, int i)
+int verif_room_name(file_t **file, char **input, int i)
 {
 	char *name = malloc(sizeof(char) * (my_strlen(input[i]) + 1));
 	int x = 0;
@@ -75,6 +75,6 @@ int verif_room_name(file_t *file, char **input, int i)
 	y = recup_y(input, i, j);
 	if (x == -1 || y == -1 || name == NULL)
 		return (84);
-	create_file_element_file(&file, x, y, name);
+	create_file_element_file(file, (pos_t){x, y}, name);
 	return (0);
 }
