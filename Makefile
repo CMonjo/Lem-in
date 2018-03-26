@@ -15,6 +15,7 @@ SRC	=	src/main.c				\
 		src/input.c				\
 		src/error_handling/file_verif.c		\
 		src/error_handling/verif_name_x_y.c	\
+		src/error_handling/list_verif.c		\
 		src/map/struct_inits.c			\
 		src/map/room_tools.c			\
 		src/map/pathfinding.c

@@ -58,7 +58,6 @@ int recup_y(char **input, int i, int j)
 
 int verif_room_name(file_t *file, char **input, int i)
 {
-	//printf("input[%d] %s\n", i, input[i]);
 	char *name = malloc(sizeof(char) * (my_strlen(input[i]) + 1));
 	int x = 0;
 	int y = 0;
@@ -70,7 +69,6 @@ int verif_room_name(file_t *file, char **input, int i)
 	}
 	j = 0;
 	name = recup_name(input, i, j, name);
-	//printf("name %s\n", name);
 	j = move_j(input, i, j);
 	x = recup_x(input, i, j);
 	j = move_j(input, i, j);

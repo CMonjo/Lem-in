@@ -69,7 +69,7 @@ void create_map(void)
 
 	if (!file)
 		return;
-	input = str_to_array(file, '\n');
+	input = my_str_split(file, '\n');
 	if (!input || verif_file(input) == 84) {
 		my_printf("Error verif file\n");
 		return;
