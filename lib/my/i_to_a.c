@@ -5,7 +5,6 @@
 ** task 2
 */
 
-#include "my.h"
 #include <stdlib.h>
 
 char *i_to_a(int number)

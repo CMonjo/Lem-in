@@ -12,21 +12,29 @@ void print_link(file_t *file)
 	file_t *tmp = file;
 
 	while (tmp != NULL) {
-		my_printf("%s\n", tmp->name);
+		my_printf("%s, x = %d et y = %d\n", tmp->name, tmp->pos.x, tmp->pos.y);
 		tmp = tmp->next;
 	}
 }
 
 int compare_positions(file_t *file)
 {
-	(void)file;
-	// file_t *tmp = file;
-	//
-	// while (tmp != NULL) {
-	// 	if (my_strcmp(tmp->name, name) == 1)
-	// 		return (84);
-	// 	tmp = tmp->next;
-	// }
+	file_t *i = file;
+	file_t *j = file;
+
+	while (i != NULL) {
+		j = i->next;
+		while (j != NULL) {
+			if (my_strcmp(i_to_a(i->pos.x), i_to_a(j->pos.x)) == 1 &&
+			my_strcmp(i_to_a(i->pos.y), i_to_a(j->pos.y)) == 1 &&
+			i->name != j->name) {
+				my_printf("Error same pos\n");
+				return (84);
+			}
+			j = j->next;
+		}
+		i = i->next;
+	}
 	return (0);
 }
 

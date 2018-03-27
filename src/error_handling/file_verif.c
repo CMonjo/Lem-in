@@ -40,7 +40,7 @@ int verif_file(char **input)
 		return (84);
 	if (parsing_file_input(&file, input) == 84)
 		return (84);
-	if (compare_names(file) == 84/* || compare_positions(file, 12, 12) == 84*/)
+	if (compare_names(file) == 84 || compare_positions(file) == 84)
 		return (84);
 	print_link(file);
 	return (0);

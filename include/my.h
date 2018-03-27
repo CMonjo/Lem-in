@@ -10,6 +10,8 @@
 
 char *my_read(char *path);
 
+char *i_to_a(int number);
+
 char **str_to_array(char *str, char c);
 
 char *get_next_line(int fd);
