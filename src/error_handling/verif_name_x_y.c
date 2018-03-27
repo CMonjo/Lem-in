@@ -58,6 +58,7 @@ int recup_y(char **input, int i, int j)
 
 int verif_room_name(file_t **file, char **input, int i, int enum_type)
 {
+	//printf("%d [%s] enum %d\n", i, input[i], enum_type);
 	char *name = malloc(sizeof(char) * (my_strlen(input[i]) + 1));
 	int x = 0;
 	int y = 0;

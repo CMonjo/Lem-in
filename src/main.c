@@ -13,6 +13,5 @@ int main(int ac, char **av)
 	if (ac != 1)
 		return (84);
 	create_map();
-	printf("OK\n");
 	return (0);
 }

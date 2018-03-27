@@ -12,20 +12,14 @@ void print_link(file_t *file)
 	file_t *tmp = file;
 
 	while (tmp != NULL) {
-		if (tmp->type == START)
-			my_printf("START\n");
-		if (tmp->type == END)
-			my_printf("END\n");
 		my_printf("%s\n", tmp->name);
 		tmp = tmp->next;
 	}
 }
 
-int compare_positions(file_t *file, int x, int y)
+int compare_positions(file_t *file)
 {
 	(void)file;
-	(void)x;
-	(void)y;
 	// file_t *tmp = file;
 	//
 	// while (tmp != NULL) {
@@ -36,14 +30,23 @@ int compare_positions(file_t *file, int x, int y)
 	return (0);
 }
 
-int compare_names(file_t *file, char *name)
+int compare_names(file_t *file)
 {
-	file_t *tmp = file;
+	file_t *i = file;
+	file_t *j = file;
+	int verif = 0;
 
-	while (tmp != NULL) {
-		if (my_strcmp(tmp->name, name) == 1)
-			return (84);
-		tmp = tmp->next;
+	while (i != NULL) {
+		j = i->next;
+		while (j != NULL) {
+			verif += my_strcmp(i->name, j->name);
+			j = j->next;
+		}
+		i = i->next;
+	}
+	if (verif != 0) {
+		my_printf("Error same name\n");
+		return (84);
 	}
 	return (0);
 }

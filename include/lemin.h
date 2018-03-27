@@ -77,8 +77,8 @@ int	connect_room_to_room(room_t *from_room, room_t *to_room);
 room_t	*get_first_unused_room_from_room(room_t *from_room);
 int parsing_file_input(file_t **file, char **input);
 void create_file_element(file_t **file, pos_t pos, char *name, int enum_type);
-int compare_names(file_t *file, char *name);
-int compare_positions(file_t *file, int x, int y);
+int compare_names(file_t *file);
+int compare_positions(file_t *file);
 void print_link(file_t *file);
 int verif_file(char **input);
 
