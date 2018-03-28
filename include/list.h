@@ -16,6 +16,7 @@ typedef struct intlist_s intlist_t;
 struct list_s {
 	void *data;
 	list_t *next;
+	void *last;
 };
 
 struct intlist_s {
@@ -24,12 +25,21 @@ struct intlist_s {
 };
 
 //Add
-int	add_list(list_t **list, void *data);
-int	add_int_list(intlist_t **list, int value);
+int	list_add(list_t **list, void *data);
+int	intlist_add(intlist_t **list, int value);
 
 //Append
-int	append_list(list_t	**list, void *data);
-int	append_int_list(intlist_t **list, int value);
+int	list_append(list_t	**list, void *data);
+int	intlist_append(intlist_t **list, int value);
+
+//Contain
+int	list_contain(list_t *list, void *data_to_check);
+
+//Copy
+list_t *list_copy(list_t *list);
+
+//Getters
+void *list_get_last(list_t *list);
 
 
 #endif /* LIST_LIB_H_ */

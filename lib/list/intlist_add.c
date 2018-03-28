@@ -2,27 +2,27 @@
 ** EPITECH PROJECT, 2018
 ** ListLib
 ** File description:
-** linked list add
+** int linked list add
 */
 
 #include "list.h"
 
-int	add_list(list_t **list, void *data)
+int	intlist_add(intlist_t **list, int value)
 {
-	list_t *head = (list_t*)malloc(sizeof(list_t));
+	intlist_t *head = (intlist_t*)malloc(sizeof(intlist_t));
 
-	head->data = data;
+	head->value = value;
 	head->next = *list;
 	*list = head;
 	return (0);
 }
 
-int	append_list(list_t	**list, void *data)
+int	intlist_append(intlist_t **list, int value)
 {
-	list_t *_tmp = *list;
-	list_t *end = (list_t*)malloc(sizeof(list_t));
+	intlist_t *_tmp = *list;
+	intlist_t *end = (intlist_t*)malloc(sizeof(intlist_t));
 
-	end->data = data;
+	end->value = value;
 	end->next = NULL;
 	if (_tmp == NULL) {
 		*list = end;

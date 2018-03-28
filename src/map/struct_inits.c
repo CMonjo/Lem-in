@@ -24,8 +24,9 @@ room_t *create_room(char *name, pos_t pos)
 
 int	connect_room_to_room(room_t *from, room_t *to)
 {
-	add_list(&from->links, to);
-	add_list(&to->links, from);
+	list_add(&from->links, to);
+	list_add(&to->links, from);
+	return (0);
 }
 
 /*int	connect_room_to_room(room_t *from_room, room_t *to_room)

@@ -52,14 +52,15 @@ struct file_s {
 };
 
 struct path_s {
-	list_t	*room;
+	list_t	*rooms;
 	int		nbrooms;
-	path_t	*next;
 };
 
 //MAP
 room_t *create_room(char *name, pos_t pos);
 
+//PATHFINDING
+list_t *get_all_paths(list_t **paths, list_t *act, room_t *to, room_t *end);
 
 
 void create_map(void);
@@ -75,7 +76,6 @@ int recup_y(char **input, int i, int j);
 int verif_room_name(file_t **file, char **input, int i, int enum_type);
 room_t *create_room(char *name, pos_t pos);
 int	connect_room_to_room(room_t *from_room, room_t *to_room);
-room_t	*get_first_unused_room_from_room(room_t *from_room);
 int parsing_file_input(file_t **file, char **input);
 void create_file_element(file_t **file, pos_t pos, char *name, int enum_type);
 int compare_names(file_t *file);
