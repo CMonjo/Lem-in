@@ -17,6 +17,7 @@
 #include <string.h>
 #include <signal.h>
 #include "my.h"
+#include "list.h"
 
 typedef struct connection_s	connects_t;
 typedef struct room_s		room_t;

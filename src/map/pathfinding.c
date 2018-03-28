@@ -10,7 +10,5 @@
 
 path_t	*get_path_between(room_t *src, room_t *dest)
 {
-	(void)src;
-	(void)dest;
 	return (NULL);
 }

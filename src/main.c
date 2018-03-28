@@ -5,7 +5,7 @@
 ** Main
 */
 
-#include "lemin.h"
+#include "../include/lemin.h"
 
 int main(int ac, char **av)
 {

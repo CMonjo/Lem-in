@@ -9,7 +9,7 @@ CC	=	gcc
 
 CFLAGS	=	-Wextra -W -Wall -I ./include/ -g3
 
-LIB	=	-L lib/my/ -lmy
+LIB	=	-L./lib/my/ -lmy -L./lib/list -llist
 
 SRC	=	src/main.c				\
 		src/input.c				\
@@ -22,20 +22,27 @@ SRC	=	src/main.c				\
 
 OBJ	=	$(SRC:.c=.o)
 
+MAKE_LIBLIST	=	make -C./lib/list
+
+MAKE_LIBMY	=	make -C./lib/my
+
 NAME	=	lem_in
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C ./lib/my/
+	$(MAKE_LIBMY)
+	$(MAKE_LIBLIST)
 	$(CC) $(OBJ) $(CFLAGS) $(LIB) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
-	make clean -C ./lib/my/
+	$(MAKE_LIBMY) clean
+	$(MAKE_LIBLIST) clean
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C ./lib/my/
+	$(MAKE_LIBMY) fclean
+	$(MAKE_LIBLIST) fclean
 
 re: fclean all

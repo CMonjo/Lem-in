@@ -5,7 +5,7 @@
 ** input
 */
 
-#include "lemin.h"
+#include "../include/lemin.h"
 
 int create_rooms(room_t **room, char **input)
 {
