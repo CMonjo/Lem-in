@@ -19,7 +19,6 @@
 #include "my.h"
 #include "list.h"
 
-typedef struct connection_s	connects_t;
 typedef struct room_s		room_t;
 typedef struct pos_s		pos_t;
 typedef struct path_s		path_t;
@@ -32,11 +31,6 @@ enum type_s {
 	END
 };
 
-struct connection_s {
-	room_t		*room;
-	connects_t	*next;
-};
-
 struct pos_s {
 	int	x;
 	int	y;
@@ -47,7 +41,7 @@ struct room_s {
 	char		*name;
 	pos_t		pos;
 	int		nblinks;
-	connects_t	*links;
+	list_t	*links;
 };
 
 struct file_s {
@@ -58,9 +52,15 @@ struct file_s {
 };
 
 struct path_s {
-	room_t	*room;
+	list_t	*room;
+	int		nbrooms;
 	path_t	*next;
 };
+
+//MAP
+room_t *create_room(char *name, pos_t pos);
+
+
 
 void create_map(void);
 void connect_rooms(char **input);
