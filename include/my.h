@@ -94,4 +94,6 @@ void	free_strdarray(char **darray);
 
 int	my_strstartswithstr(char *str2, char *str1);
 
+int str_num_and_alpha(char *str);
+
 #endif

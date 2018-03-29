@@ -58,23 +58,24 @@ int recup_y(char **input, int i, int j)
 
 int verif_room_name(file_t **file, char **input, int i, int enum_type)
 {
-	//printf("%d [%s] enum %d\n", i, input[i], enum_type);
 	char *name = malloc(sizeof(char) * (my_strlen(input[i]) + 1));
 	int x = 0;
 	int y = 0;
 	int j = 0;
 
+	//TMP
 	for (;input[i][j] != '\0'; j++) {
 		if (input[i][j] == '-')
 			return (0);
 	}
+	//TMP
 	j = 0;
 	name = recup_name(input, i, j, name);
 	j = move_j(input, i, j);
 	x = recup_x(input, i, j);
 	j = move_j(input, i, j);
 	y = recup_y(input, i, j);
-	if (x == -1 || y == -1 || name == NULL)
+	if (x == -1 || y == -1 || name == NULL || str_num_and_alpha(name) == 1)
 		return (84);
 	create_file_element(file, (pos_t){x, y}, name, enum_type);
 	return (0);
