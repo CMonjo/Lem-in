@@ -36,11 +36,9 @@ int verif_file(char **input)
 	file_t *file = malloc(sizeof(file_t));
 
 	file = NULL;
-	if (my_str_isnum(input[0]) == 1)
-		return (84);
-	if (parsing_file_input(&file, input) == 84)
-		return (84);
-	if (compare_names(file) == 84 || compare_positions(file) == 84)
+	if (my_str_isnum(input[0]) == 1 || parsing_file_input(&file, input) ==
+	84 || compare_names(file) == 84 || compare_positions(file) == 84 ||
+	compare_connexions(file, input) == 84)
 		return (84);
 	print_link(file);
 	return (0);

@@ -22,7 +22,14 @@ room_t *create_room(char *name, pos_t pos)
 	return (room);
 }
 
-int	connect_room_to_room(room_t *from_room, room_t *to_room)
+int	connect_room_to_room(room_t *from, room_t *to)
+{
+	list_add(&from->links, to);
+	list_add(&to->links, from);
+	return (0);
+}
+
+/*int	connect_room_to_room(room_t *from_room, room_t *to_room)
 {
 	connects_t *link = (connects_t*)malloc(sizeof(connects_t));
 
@@ -36,4 +43,4 @@ int	connect_room_to_room(room_t *from_room, room_t *to_room)
 		return (1);
 	else
 		return (0);
-}
+}*/
