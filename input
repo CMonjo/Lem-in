@@ -1,11 +1,11 @@
 34
 room2 16 7
 room3 16 3
-room4 1 5
+room4 10 5
 room1 1 5
 #comment
 ##end
-roomEnd 9 3
+roomEnd 0 3
 ##start
 
 roomStart 1 0

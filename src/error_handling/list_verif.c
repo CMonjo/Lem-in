@@ -17,6 +17,19 @@ void print_link(file_t *file)
 	}
 }
 
+int compare_connexions(file_t *file, char **input)
+{
+	int i = 0;
+
+	for (int a = 0;  a == 0 && input[i] != NULL; i++) {
+		for (int j = 0; input[i][j] != '\0'; j++) {
+			input[i][j] == '-' ? a = 1 : 0;
+		}
+		a == 1 ? i -= 1 : 0;
+	}
+	return (84);
+}
+
 int compare_positions(file_t *file)
 {
 	file_t *i = file;
