@@ -27,7 +27,8 @@ int compare_connexions(file_t *file, char **input)
 		}
 		a == 1 ? i -= 1 : 0;
 	}
-	return (84);
+	printf("allo\n");
+	return (0);
 }
 
 int compare_positions(file_t *file)
@@ -38,8 +39,9 @@ int compare_positions(file_t *file)
 	while (i != NULL) {
 		j = i->next;
 		while (j != NULL) {
-			if (my_strcmp(i_to_a(i->pos.x), i_to_a(j->pos.x)) == 1 &&
-			my_strcmp(i_to_a(i->pos.y), i_to_a(j->pos.y)) == 1 &&
+			if (my_strcmp(i_to_a(i->pos.x),
+			i_to_a(j->pos.x)) == 1 && my_strcmp(i_to_a(i->pos.y),
+			i_to_a(j->pos.y)) == 1 &&
 			i->name != j->name) {
 				my_printf("Error same pos\n");
 				return (84);
