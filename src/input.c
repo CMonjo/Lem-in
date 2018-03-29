@@ -64,7 +64,7 @@ void connect_rooms(char **input)
 
 void create_map(void)
 {
-	char *file = my_read("input");
+	char *file = my_read();
 	char **input;
 
 	if (!file)

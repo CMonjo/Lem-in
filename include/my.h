@@ -8,7 +8,7 @@
 #ifndef __MY_H__
 #define __MY_H__
 
-char *my_read(char *path);
+char *my_read(void);
 
 char *i_to_a(int number);
 
