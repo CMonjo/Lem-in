@@ -5,6 +5,10 @@
 ## lib maker :o
 ##
 
+CC	= gcc
+
+CFLAGS	=	-Wall -Wextra -W
+
 SRC	=	$(wildcard *.c)
 
 OBJ	=	$(SRC:.c=.o)

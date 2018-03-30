@@ -9,6 +9,8 @@ CC	=	gcc
 
 SRC	=	$(wildcard *.c)
 
+CFLAGS	=	-Wall -Wextra -W
+
 OBJ	=	$(SRC:.c=.o)
 
 NAME =	libmy.a
