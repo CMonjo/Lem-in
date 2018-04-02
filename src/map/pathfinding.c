@@ -8,16 +8,6 @@
 #include "../../include/lemin.h"
 #include "../../include/my.h"
 
-path_t *init_path(room_t *start)
-{
-	path_t *path = (path_t*)malloc(sizeof(path_t));
-
-	path->rooms = NULL;
-	list_append(&path->rooms, start);
-	path->nbrooms = path->rooms == NULL ? 0 : 1;
-	return (path);
-}
-
 void disp_path(list_t *path)
 {
 	list_t *_tmp = path;
@@ -54,21 +44,3 @@ list_t *get_all_paths(list_t **paths, list_t *act, room_t *to, room_t *end)
 	}
 	return (*paths);
 }
-
-/*list_t *get_all_path(room_t *start, room_t *end, list_t *analyzed)
-{
-	list_t *paths = NULL;
-	//path_t *tmp_path = init_path(start);
-	list_t *links = start->links;
-	room_t *tmp_room = NULL;
-
-	for (; start != end && links != NULL; links = links->next) {
-		tmp_room = (room_t*)links->data;
-		if (list_contain(analyzed, tmp_room) || tmp_room == NULL)
-			continue;
-		list_add(&analyzed, tmp_room);
-		//list_append(&tmp_path->rooms, tmp_room);
-		list_append(&paths, get_all_path(tmp_room, end, analyzed));
-	}
-	return (paths);
-}*/

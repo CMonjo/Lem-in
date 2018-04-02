@@ -51,11 +51,6 @@ struct file_s {
 	file_t	*next;
 };
 
-struct path_s {
-	list_t	*rooms;
-	int		nbrooms;
-};
-
 //MAP
 room_t *create_room(char *name, pos_t pos);
 
