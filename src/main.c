@@ -44,7 +44,7 @@ room_t	*test_map(room_t *end)
 
 	connect_room_to_room(portmarianne3, end);
 
-	return (pleurope4);
+	return (rives1);
 }
 
 int main(int ac, char **av)
@@ -52,25 +52,30 @@ int main(int ac, char **av)
 	(void)av;
 	if (ac != 1)
 		return (84);
-	//room_t *end = create_room("PORT MARIANNE T1", (pos_t){0, 0});
-	create_map();
-	/*room_t *testmap = test_map(end);
+	room_t *end = create_room("PORT MARIANNE T1", (pos_t){0, 0});
+	//create_map();
+	room_t *testmap = test_map(end);
 	list_t *pathsV2 = NULL;
 	list_t *paths = get_all_paths(&paths, NULL, testmap, end);
+	list_t *pathscpy = paths;
 
 	if (paths == NULL)
 		my_printf("PATHS NULL\n");
 	my_printf("\n§§§$$$--$$$§§§\n[%s -> %s]\nFOUND PATHS :\n", testmap->name, end->name);
-	for (; paths != NULL; paths = paths->next) {
+	for (; pathscpy != NULL; pathscpy = pathscpy->next) {
 		my_printf(" • ");
-		disp_path((list_t*)paths->data);
-	}*/
-	//list_t *path = get_all_path(testmap , end, NULL);
-
-	//for (; path != NULL; path = path->next) {
-	//	list_t *tmp = (list_t*)path->data;
-	//	room_t *rtmp = (room_t*)tmp->data;
-	//	my_printf("-- (%s)\n", rtmp->name);
-	//}
+		disp_path((list_t*)pathscpy->data);
+	}
+	my_printf("\n----\nSHORTEST:\n\n • ");
+	list_t *shortest = get_shortest_available_path(paths);
+	disp_path(shortest);
+	((room_t*)shortest->next->data)->occuped = 1;
+	my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
+	shortest = get_shortest_available_path(paths);
+	disp_path(shortest);
+	((room_t*)shortest->next->data)->occuped = 1;
+	my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
+	shortest = get_shortest_available_path(paths);
+	disp_path(shortest);
 	return (0);
 }

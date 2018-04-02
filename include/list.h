@@ -41,5 +41,8 @@ list_t *list_copy(list_t *list);
 //Getters
 void *list_get_last(list_t *list);
 
+//Size
+int	list_size(list_t *list);
+
 
 #endif /* LIST_LIB_H_ */
