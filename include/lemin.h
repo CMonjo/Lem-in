@@ -23,6 +23,7 @@ typedef struct room_s		room_t;
 typedef struct pos_s		pos_t;
 typedef struct path_s		path_t;
 typedef struct file_s		file_t;
+typedef struct parse_s		parse_t;
 typedef enum type_s		type_t;
 
 enum type_s {
@@ -45,15 +46,22 @@ struct room_s {
 };
 
 struct file_s {
+	room_t *room;
 	char	*name;
 	type_t type;
 	pos_t	pos;
 	file_t	*next;
 };
 
+struct parse_s {
+	int start;
+	int end;
+	int type;
+};
+
 struct path_s {
 	list_t	*rooms;
-	int		nbrooms;
+	int nbrooms;
 };
 
 //MAP
@@ -61,7 +69,7 @@ room_t *create_room(char *name, pos_t pos);
 
 //PATHFINDING
 list_t *get_all_paths(list_t **paths, list_t *act, room_t *to, room_t *end);
-int compare_connexions(file_t *file, char **);
+int compare_connections(file_t *file, char **input, int i);
 void create_map(void);
 void connect_rooms(char **input);
 int count_rooms(char **input);
@@ -72,10 +80,10 @@ int move_j(char **input, int i, int j);
 char *recup_name(char **input, int i, int j, char *name);
 int recup_x(char **input, int i, int j);
 int recup_y(char **input, int i, int j);
-int verif_room_name(file_t **file, char **input, int i, int enum_type);
+int verif_room_name(file_t **file, parse_t *parse, char **input, int i);
 room_t *create_room(char *name, pos_t pos);
-int	connect_room_to_room(room_t *from_room, room_t *to_room);
-int parsing_file_input(file_t **file, char **input, int begin);
+int connect_room_to_room(room_t *from_room, room_t *to_room);
+int parsing_file_input(file_t **file, parse_t *parse, char **input, int begin);
 void create_file_element(file_t **file, pos_t pos, char *name, int enum_type);
 int compare_names(file_t *file);
 int compare_positions(file_t *file);
