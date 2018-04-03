@@ -56,19 +56,13 @@ int recup_y(char **input, int i, int j)
 	return (my_getnbr(ya));
 }
 
-int verif_room_name(file_t **file, char **input, int i, int enum_type)
+int verif_room_name(file_t **file, parse_t *parse, char **input, int i)
 {
 	char *name = malloc(sizeof(char) * (my_strlen(input[i]) + 1));
 	int x = 0;
 	int y = 0;
 	int j = 0;
 
-	//TMP
-	for (;input[i][j] != '\0'; j++) {
-		if (input[i][j] == '-')
-			return (0);
-	}
-	//TMP
 	j = 0;
 	name = recup_name(input, i, j, name);
 	j = move_j(input, i, j);
@@ -77,6 +71,8 @@ int verif_room_name(file_t **file, char **input, int i, int enum_type)
 	y = recup_y(input, i, j);
 	if (x == -1 || y == -1 || name == NULL || str_num_and_alpha(name) == 1)
 		return (84);
-	create_file_element(file, (pos_t){x, y}, name, enum_type);
+	// ATTENTION LA CREATION DE LA LISTE CHAINEE DOIT
+	// ETRE FAITE APRES LA VERIF DES CONNEXIONS
+	create_file_element(file, (pos_t){x, y}, name, parse->type);
 	return (0);
 }

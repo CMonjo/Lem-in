@@ -72,6 +72,9 @@ list_t *get_all_paths(list_t **paths, list_t *act, room_t *to, room_t *end);
 list_t *get_shortest_available_path(list_t *paths);
 
 int compare_connections(file_t *file, char **input, int i);
+list_t *get_shortest_available_path(list_t *paths);
+
+int compare_connexions(file_t *file, char **);
 void create_map(void);
 void connect_rooms(char **input);
 int count_rooms(char **input);

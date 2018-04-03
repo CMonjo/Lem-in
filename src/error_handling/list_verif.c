@@ -17,18 +17,21 @@ void print_link(file_t *file)
 	}
 }
 
-int compare_connexions(file_t *file, char **input)
+int compare_connections(file_t *file, char **input, int in)
 {
+	file_t *tmp = file;
+	char **connect = my_str_split(input[in], '-');
 	int i = 0;
 
-	//CAST FILE
-	(void)file;
-	for (int a = 0;  a == 0 && input[i] != NULL; i++) {
-		for (int j = 0; input[i][j] != '\0'; j++) {
-			input[i][j] == '-' ? a = 1 : 0;
-		}
-		a == 1 ? i -= 1 : 0;
-	}
+	for (;connect[i] != NULL; i++);
+	if (i != 2 || my_strcmp(connect[0], connect[1]) == 1)
+		return (84);
+	for (i = 0; tmp != NULL; tmp = tmp->next)
+		if (my_strcmp(connect[0], tmp->name) == 1 ||
+		my_strcmp(connect[1], tmp->name) == 1)
+			i += 1;
+//	if (i == 2)
+		//add in list la connexion
 	return (0);
 }
 

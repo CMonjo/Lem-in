@@ -6,7 +6,7 @@
 #comment
 #comment
 ###end
-#start
+#-start
 34
 room2 16 7
 room3 16 3
@@ -19,7 +19,7 @@ roomEnd 9 3
 
 
 
-#comment
+#c-----mment
 #comment
 #comment
 #comment
@@ -35,16 +35,10 @@ roomStart 1 0
 room7 4 8
 room0 9 5
 
-0-6
-0-4
-1-3
-4-3
-5-2
-3-5
-#another comment
-4-2
-2-1
-7-6
-7-2
-7-4
-6-5
+#stocker les connexions dans une autre LISTE
+#si 0 connexion ou impossibilité d'aller de start à end -> error
+roomStart-roomEnd
+room2-room4
+room1-room1
+room3-room2
+room0-roomEnd
