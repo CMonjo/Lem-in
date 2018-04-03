@@ -46,11 +46,11 @@ int parsing_file_input(file_t **file, parse_t *parse, char **input, int begin)
 				return (84);
 		}
 		else if (status == 1 && input[i][0] != '#') {
-		 	// if (compare_connections(*file, input, i) == 84)
-			// 	return (84);
+		 	if (compare_connections(*file, input, i) == 84)
+				return (84);
 			// IL SE PEUT QU'IL N'Y AI PAS DE RETURN 84 A FAIRE
 			// POUR LES CONNEXIONS
-			compare_connections(*file, input, i);
+			//compare_connections(*file, input, i);
 		}
 	}
 	if (parse->start != 1 || parse->end != 1)

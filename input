@@ -39,6 +39,6 @@ room0 9 5
 #si 0 connexion ou impossibilité d'aller de start à end -> error
 roomStart-roomEnd
 room2-room4
-room1-room1
+room1-room11
 room3-room2
 room0-roomEnd

@@ -52,30 +52,30 @@ int main(int ac, char **av)
 	(void)av;
 	if (ac != 1)
 		return (84);
-	room_t *end = create_room("PORT MARIANNE T1", (pos_t){0, 0});
-	//create_map();
-	room_t *testmap = test_map(end);
-	list_t *pathsV2 = NULL;
-	list_t *paths = get_all_paths(&paths, NULL, testmap, end);
-	list_t *pathscpy = paths;
-
-	if (paths == NULL)
-		my_printf("PATHS NULL\n");
-	my_printf("\n§§§$$$--$$$§§§\n[%s -> %s]\nFOUND PATHS :\n", testmap->name, end->name);
-	for (; pathscpy != NULL; pathscpy = pathscpy->next) {
-		my_printf(" • ");
-		disp_path((list_t*)pathscpy->data);
-	}
-	my_printf("\n----\nSHORTEST:\n\n • ");
-	list_t *shortest = get_shortest_available_path(paths);
-	disp_path(shortest);
-	((room_t*)shortest->next->data)->occuped = 1;
-	my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
-	shortest = get_shortest_available_path(paths);
-	disp_path(shortest);
-	((room_t*)shortest->next->data)->occuped = 1;
-	my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
-	shortest = get_shortest_available_path(paths);
-	disp_path(shortest);
+	// room_t *end = create_room("PORT MARIANNE T1", (pos_t){0, 0});
+	create_map();
+	// room_t *testmap = test_map(end);
+	// list_t *pathsV2 = NULL;
+	// list_t *paths = get_all_paths(&paths, NULL, testmap, end);
+	// list_t *pathscpy = paths;
+	//
+	// if (paths == NULL)
+	// 	my_printf("PATHS NULL\n");
+	// my_printf("\n§§§$$$--$$$§§§\n[%s -> %s]\nFOUND PATHS :\n", testmap->name, end->name);
+	// for (; pathscpy != NULL; pathscpy = pathscpy->next) {
+	// 	my_printf(" • ");
+	// 	disp_path((list_t*)pathscpy->data);
+	// }
+	// my_printf("\n----\nSHORTEST:\n\n • ");
+	// list_t *shortest = get_shortest_available_path(paths);
+	// disp_path(shortest);
+	// ((room_t*)shortest->next->data)->occuped = 1;
+	// my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
+	// shortest = get_shortest_available_path(paths);
+	// disp_path(shortest);
+	// ((room_t*)shortest->next->data)->occuped = 1;
+	// my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
+	// shortest = get_shortest_available_path(paths);
+	// disp_path(shortest);
 	return (0);
 }
