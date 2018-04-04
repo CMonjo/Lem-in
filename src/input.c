@@ -62,17 +62,39 @@ void connect_rooms(char **input)
 	link_rooms(room, input, i);
 }
 
+void display_output(file_t *file, parse_t *parse)
+{
+	file_t *tmp = file;
+
+	my_printf("#number_of_ants\n%d\n", parse->nb_ant);
+	my_printf("#rooms\n##start\n");
+	for (;tmp != NULL; tmp = tmp->next) {
+		//if (tmp->type == START)
+			my_printf("%s %d %d\n", tmp->name, tmp->pos.x, tmp->pos.y);
+		//if (tmp->type == END)
+			//my_printf("##end\n%s %d %d\n", tmp->name, tmp->pos.x, tmp->pos.y);
+
+	}
+}
+
 void create_map(void)
 {
-	char *file = my_read();
+	file_t *file = malloc(sizeof(file_t));
+	parse_t *parse = malloc(sizeof(parse_t));
+	char *gnl = my_read();
 	char **input;
 
-	if (!file)
+	file = NULL;
+	parse->start = 0;
+	parse->end = 0;
+	parse->type = 0;
+	if (!gnl)
 		return;
-	input = my_str_split(file, '\n');
-	if (!input || verif_file(input) == 84) {
+	input = my_str_split(gnl, '\n');
+	if (!input || verif_file(&file, parse, input) == 84) {
 		my_printf("Error verif file\n");
 		return;
 	}
 	connect_rooms(input);
+	display_output(file, parse);
 }

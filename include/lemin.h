@@ -54,6 +54,7 @@ struct file_s {
 };
 
 struct parse_s {
+	int nb_ant;
 	int start;
 	int end;
 	int type;
@@ -97,6 +98,6 @@ void create_file_element(file_t **file, pos_t pos, char *name, int enum_type);
 int compare_names(file_t *file);
 int compare_positions(file_t *file);
 void print_link(file_t *file);
-int verif_file(char **input);
+int verif_file(file_t **file, parse_t *parse, char **input);
 
 #endif /* LEMIN_H_ */

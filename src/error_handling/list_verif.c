@@ -86,6 +86,7 @@ void create_file_element(file_t **file, pos_t pos, char *name, int enum_type)
 	file_t *new = malloc(sizeof(file_t));
 
 	new->name = name;
+	// FAIRE DANS LE .H LA DECLARATION DES VALEURS 0 1 2
 	enum_type == 0 ? new->type = MIDDLE : 0;
 	enum_type == 1 ? new->type = START : 0;
 	enum_type == 2 ? new->type = END : 0;
