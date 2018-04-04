@@ -12,10 +12,10 @@ void print_link(file_t *file)
 	file_t *tmp = file;
 
 	while (tmp != NULL) {
-		if (tmp->type == START)
-			my_printf("%s, x = %d et y = %d\n", tmp->name, tmp->pos.x, tmp->pos.y);
+		my_printf("%s\n", tmp->name);
 		tmp = tmp->next;
 	}
+	printf("\n");
 }
 
 int compare_connections(file_t *file, char **input, int in)

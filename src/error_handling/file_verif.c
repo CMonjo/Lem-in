@@ -54,6 +54,8 @@ int verif_file(file_t **file, parse_t *parse, char **input)
 {
 	int i = 0;
 
+	for (int clear = 0; input[clear] != NULL; clear++)
+		input[clear] = my_clear_str(input[clear]);
 	for (i = 0; input[i][0] == '#'; i++) {
 		if (my_strcmp(input[i], "##start") == 1 ||
 		my_strcmp(input[i], "##end") == 1)
@@ -62,7 +64,7 @@ int verif_file(file_t **file, parse_t *parse, char **input)
 	parse->nb_ant = my_getnbr(input[i]);
 	if (parse->nb_ant <= 0 || my_str_isnum(input[i]) == 1 ||
 	parsing_file_input(file, parse, input, ++i) == 84
-	|| compare_names(*file) == 84)
+	|| compare_names(*file) == 84 || compare_positions(*file) == 84)
 		return (84);
 	//print_link(*file);
 	return (0);

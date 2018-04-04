@@ -1,25 +1,26 @@
 #11
 #comment
+		 #comment
 #comment
-#comment
-#comment
-#comment
-#comment
-###end
+   		   #comment
+  #comment
+ #comment
+	###end
 #start
-34
-room2 16 7 #tests
+    		34
+room2 16 7
 room4 1 1
 room1 1 2
-    		##end
+##end
 
 roomEnd 9 3
-      #start
+##start
 
 
 
-#c-----mment
-	#comment
+	#c-----mment
+ #c-----mment
+		  	#c-----mment
 #comment
 #comment
 #comment
@@ -30,7 +31,8 @@ roomEnd 9 3
 #comment
 #comment
 #comment
-roomStart 1 0
+#comment
+		   roomStart 1 0
 room7 4 8
 room0 9 5
 
@@ -40,4 +42,5 @@ roomStart-roomEnd
 room2-room4
 room1-room4
 room3-room2
+rrrrr-rrrrs
 room0-roomEnd
