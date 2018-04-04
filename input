@@ -11,7 +11,7 @@
 room2 16 7 #tests
 room4 1 1
 room1 1 2
-##end
+    		##end
 
 roomEnd 9 3
 ##start
@@ -19,7 +19,7 @@ roomEnd 9 3
 
 
 #c-----mment
-#comment
+	#comment
 #comment
 #comment
 #comment

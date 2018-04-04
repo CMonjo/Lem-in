@@ -5,7 +5,7 @@
 ** input
 */
 
-#include "lemin.h"
+#include "../../include/lemin.h"
 
 int check_nb_type(parse_t *parse, char **input, int i)
 {
@@ -38,7 +38,8 @@ int parsing_file_input(file_t **file, parse_t *parse, char **input, int begin)
 	int status = 0;
 
 	for (int i = begin; input[i] != NULL; i++) {
-		if (input[i][0] == '#')
+		input[i] = my_clear_str(input[i]);
+		if (line_is_comment(input[i]))
 			parse->type = 0;
 		if (check_nb_type(parse, input, i) == 84)
 			return (84);

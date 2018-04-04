@@ -75,6 +75,8 @@ list_t *get_shortest_available_path(list_t *paths);
 //ERROR HANDLING
 //line tools
 int	line_is_comment(char *line);
+char *my_clear_str(char *str);
+char *my_improved_strcat(char *dest, char *src);
 
 int compare_connections(file_t *file, char **input, int i);
 list_t *get_shortest_available_path(list_t *paths);
