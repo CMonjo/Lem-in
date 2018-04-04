@@ -15,7 +15,7 @@ void print_link(file_t *file)
 		my_printf("%s\n", tmp->name);
 		tmp = tmp->next;
 	}
-	printf("\n");
+	my_printf("\n");
 }
 
 int compare_connections(file_t *file, char **input, int in)
@@ -50,10 +50,8 @@ int compare_positions(file_t *file)
 			if (my_strcmp(i_to_a(i->pos.x),
 			i_to_a(j->pos.x)) == 1 && my_strcmp(i_to_a(i->pos.y),
 			i_to_a(j->pos.y)) == 1 &&
-			i->name != j->name) {
-				my_printf("Error same pos\n");
+			i->name != j->name)
 				return (84);
-			}
 			j = j->next;
 		}
 		i = i->next;
@@ -75,10 +73,8 @@ int compare_names(file_t *file)
 		}
 		i = i->next;
 	}
-	if (verif != 0) {
-		my_printf("Error same name\n");
+	if (verif != 0)
 		return (84);
-	}
 	return (0);
 }
 

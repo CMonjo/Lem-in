@@ -28,17 +28,13 @@ char *my_clear_str(char *str)
 
 int	line_is_comment(char *line)
 {
-	my_printf("$line: %s\n", line);
 	for (int i = 0; line[i] != '\0'; i++) {
 		if (line[i] == ' ' || line[i] == '\t')
 			continue;
-		if (line[i] == '#') {
-			my_printf("IS COMMENT\n");
+		if (line[i] == '#')
 			return (1);
-		} else {
-			my_printf("ISN'T COMMENT\n");
+		else
 			break;
-		}
 	}
 	return (0);
 }

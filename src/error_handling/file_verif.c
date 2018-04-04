@@ -66,6 +66,5 @@ int verif_file(file_t **file, parse_t *parse, char **input)
 	parsing_file_input(file, parse, input, ++i) == 84
 	|| compare_names(*file) == 84 || compare_positions(*file) == 84)
 		return (84);
-	//print_link(*file);
 	return (0);
 }

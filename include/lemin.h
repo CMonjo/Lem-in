@@ -40,8 +40,8 @@ struct pos_s {
 struct room_s {
 	int		occuped;
 	char		*name;
-	pos_t		pos;
 	int		nblinks;
+	pos_t		pos;
 	list_t	*links;
 };
 
@@ -82,7 +82,7 @@ int compare_connections(file_t *file, char **input, int i);
 list_t *get_shortest_available_path(list_t *paths);
 
 int compare_connexions(file_t *file, char **);
-void create_map(void);
+int create_map(void);
 void connect_rooms(char **input);
 int count_rooms(char **input);
 void link_rooms(room_t **room, char **input, int i);

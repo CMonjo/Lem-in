@@ -53,7 +53,7 @@ int main(int ac, char **av)
 	if (ac != 1)
 		return (84);
 	// room_t *end = create_room("PORT MARIANNE T1", (pos_t){0, 0});
-	create_map();
+	return (create_map());
 	// room_t *testmap = test_map(end);
 	// list_t *pathsV2 = NULL;
 	// list_t *paths = get_all_paths(&paths, NULL, testmap, end);

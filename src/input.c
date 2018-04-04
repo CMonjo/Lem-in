@@ -73,11 +73,10 @@ void display_output(file_t *file, parse_t *parse)
 			my_printf("%s %d %d\n", tmp->name, tmp->pos.x, tmp->pos.y);
 		if (tmp->type == END)
 			my_printf("##end\n%s %d %d\n", tmp->name, tmp->pos.x, tmp->pos.y);
-
 	}
 }
 
-void create_map(void)
+int create_map(void)
 {
 	file_t *file = malloc(sizeof(file_t));
 	parse_t *parse = malloc(sizeof(parse_t));
@@ -89,12 +88,11 @@ void create_map(void)
 	parse->end = 0;
 	parse->type = 0;
 	if (!gnl)
-		return;
+		return (84);
 	input = my_str_split(gnl, '\n');
-	if (!input || verif_file(&file, parse, input) == 84) {
-		my_printf("Error verif file\n");
-		return;
-	}
+	if (!input || verif_file(&file, parse, input) == 84)
+		return (84);
 	connect_rooms(input);
 	display_output(file, parse);
+	return (0);
 }
