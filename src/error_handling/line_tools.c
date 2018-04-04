@@ -38,3 +38,16 @@ int	line_is_comment(char *line)
 	}
 	return (0);
 }
+
+room_t *get_room_from_name(list_t *rooms, char *name)
+{
+	list_t *tmp = rooms;
+	room_t *room = NULL;
+
+	for (; tmp != NULL; tmp = tmp->next) {
+		room = (room_t*)tmp->data;
+		if (my_streqstr(name, room->name))
+			return (room);
+	}
+	return (NULL);
+}

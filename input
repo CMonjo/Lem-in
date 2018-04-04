@@ -16,7 +16,6 @@ room1 1 2
 roomEnd 9 3
 ##start
 
-
 	#c-----mment
  #c-----mment
 		  	#c-----mment
@@ -38,6 +37,7 @@ room0 9 5
 #stocker les connexions dans une autre LISTE
 #si 0 connexion ou impossibilité d'aller de start à end -> error
 roomStart-roomEnd
+roomStart-room2
 room2-room4
 room1-room4
 room3-room2

@@ -7,7 +7,7 @@
 
 #include "../include/lemin.h"
 
-int create_rooms(room_t **room, char **input)
+/*int create_rooms(room_t **room, char **input)
 {
 	int i = 1;
 	char **info = str_to_array(input[i], ' ');
@@ -60,39 +60,40 @@ void connect_rooms(char **input)
 	room = malloc(sizeof(room_t *) * count_rooms(input));
 	i = create_rooms(room, input);
 	link_rooms(room, input, i);
-}
+}*/
 
-void display_output(file_t *file, parse_t *parse)
+void display_output(list_t *rooms, parse_t *parse)
 {
-	file_t *tmp = file;
+	list_t *tmp = rooms;
+	room_t *room = NULL;
 
 	my_printf("#number_of_ants\n%d\n", parse->nb_ant);
 	my_printf("#rooms\n##start\n");
 	for (;tmp != NULL; tmp = tmp->next) {
-		if (tmp->type == START)
-			my_printf("%s %d %d\n", tmp->name, tmp->pos.x, tmp->pos.y);
-		if (tmp->type == END)
-			my_printf("##end\n%s %d %d\n", tmp->name, tmp->pos.x, tmp->pos.y);
+		room = (room_t*)tmp->data;
+		if (room->type == START)
+			my_printf("%s %d %d\n", room->name, room->pos.x, room->pos.y);
+		if (room->type == END)
+			my_printf("##end\n%s %d %d\n", room->name, room->pos.x, room->pos.y);
 	}
 }
 
-int create_map(void)
+int create_map(list_t **rooms)
 {
-	file_t *file = malloc(sizeof(file_t));
+	//file_t *file = malloc(sizeof(file_t));
 	parse_t *parse = malloc(sizeof(parse_t));
 	char *gnl = my_read();
-	char **input;
+	char **input = NULL;
 
-	file = NULL;
 	parse->start = 0;
 	parse->end = 0;
 	parse->type = 0;
 	if (!gnl)
 		return (84);
 	input = my_str_split(gnl, '\n');
-	if (!input || verif_file(&file, parse, input) == 84)
+	if (!input || verif_file(rooms, parse, input) == 84)
 		return (84);
-	connect_rooms(input);
-	display_output(file, parse);
+	//connect_rooms(input);
+	display_output(*rooms, parse);
 	return (0);
 }

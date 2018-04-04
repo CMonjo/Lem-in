@@ -5,7 +5,9 @@
 ** input
 */
 
-#include "lemin.h"
+#include "../../include/lemin.h"
+#include "../../include/my.h"
+#include "../../include/list.h"
 
 int move_j(char **input, int i, int j)
 {
@@ -56,7 +58,7 @@ int recup_y(char **input, int i, int j)
 	return (my_getnbr(ya));
 }
 
-int verif_room_name(file_t **file, parse_t *parse, char **input, int i)
+int verif_room_name(list_t **rooms, parse_t *parse, char **input, int i)
 {
 	char *name = malloc(sizeof(char) * (my_strlen(input[i]) + 1));
 	int x = 0;
@@ -71,6 +73,6 @@ int verif_room_name(file_t **file, parse_t *parse, char **input, int i)
 	y = recup_y(input, i, j);
 	if (x == -1 || y == -1 || name == NULL || str_num_and_alpha(name) == 1)
 		return (84);
-	create_file_element(file, (pos_t){x, y}, name, parse->type);
+	list_add(rooms, create_room(name, (pos_t){x, y}, parse->type));
 	return (0);
 }
