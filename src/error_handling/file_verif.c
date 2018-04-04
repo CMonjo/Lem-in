@@ -37,7 +37,9 @@ int parsing_file_input(file_t **file, parse_t *parse, char **input, int begin)
 {
 	int status = 0;
 
-	for (int i = begin; input[i] != NULL; i++, parse->type = 0) {
+	for (int i = begin; input[i] != NULL; i++) {
+		if (input[i][0] == '#')
+			parse->type = 0;
 		if (check_nb_type(parse, input, i) == 84)
 			return (84);
 		check_dash(input, i) == 1 ? status = 1 : 0;
@@ -58,25 +60,21 @@ int parsing_file_input(file_t **file, parse_t *parse, char **input, int begin)
 	return (0);
 }
 
-int verif_file(char **input)
+int verif_file(file_t **file, parse_t *parse, char **input)
 {
-	file_t *file = malloc(sizeof(file_t));
-	parse_t *parse = malloc(sizeof(parse_t));
 	int i = 0;
 
-	file = NULL;
-	parse->start = 0;
-	parse->end = 0;
-	parse->type = 0;
 	for (i = 0; input[i][0] == '#'; i++) {
 		if (my_strcmp(input[i], "##start") == 1 ||
 		my_strcmp(input[i], "##end") == 1)
 			break;
 	}
-	if (my_str_isnum(input[i]) == 1 ||
-	parsing_file_input(&file, parse, input, ++i) == 84
-	|| compare_names(file) == 84)
+	parse->nb_ant = my_getnbr(input[i]);
+	if (parse->nb_ant <= 0 || my_str_isnum(input[i]) == 1 ||
+	parsing_file_input(file, parse, input, ++i) == 84
+	|| compare_names(*file) == 84)
 		return (84);
-	//print_link(file);
+	printf("1\n");
+	print_link(*file);
 	return (0);
 }

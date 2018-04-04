@@ -6,10 +6,9 @@
 #comment
 #comment
 ###end
-#-start
+#start
 34
-room2 16 7
-room3 16 3
+room2 16 7 #tests
 room4 1 1
 room1 1 2
 ##end
@@ -39,6 +38,6 @@ room0 9 5
 #si 0 connexion ou impossibilité d'aller de start à end -> error
 roomStart-roomEnd
 room2-room4
-room1-room11
+room1-room4
 room3-room2
 room0-roomEnd

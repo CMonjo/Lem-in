@@ -71,8 +71,7 @@ int verif_room_name(file_t **file, parse_t *parse, char **input, int i)
 	y = recup_y(input, i, j);
 	if (x == -1 || y == -1 || name == NULL || str_num_and_alpha(name) == 1)
 		return (84);
-	// ATTENTION LA CREATION DE LA LISTE CHAINEE DOIT
-	// ETRE FAITE APRES LA VERIF DES CONNEXIONS
+	//printf("parse %d\n", parse->type);
 	create_file_element(file, (pos_t){x, y}, name, parse->type);
 	return (0);
 }
