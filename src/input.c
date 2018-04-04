@@ -69,10 +69,10 @@ void display_output(file_t *file, parse_t *parse)
 	my_printf("#number_of_ants\n%d\n", parse->nb_ant);
 	my_printf("#rooms\n##start\n");
 	for (;tmp != NULL; tmp = tmp->next) {
-		//if (tmp->type == START)
+		if (tmp->type == START)
 			my_printf("%s %d %d\n", tmp->name, tmp->pos.x, tmp->pos.y);
-		//if (tmp->type == END)
-			//my_printf("##end\n%s %d %d\n", tmp->name, tmp->pos.x, tmp->pos.y);
+		if (tmp->type == END)
+			my_printf("##end\n%s %d %d\n", tmp->name, tmp->pos.x, tmp->pos.y);
 
 	}
 }

@@ -5,21 +5,16 @@
 ** input
 */
 
-#include "lemin.h"
+#include "../../include/lemin.h"
 
 int check_nb_type(parse_t *parse, char **input, int i)
 {
-	my_strcmp(input[i], "##start") == 1 ?
-	parse->start += 1, parse->type = 1 : 0;
-	my_strcmp(input[i], "##end") == 1 ?
-	parse->end += 1, parse->type = 2 : 0;
-	for (; parse->type != 0 && input[i][0] == '#' && input[i + 1] != NULL
-	&& my_strcmp(input[i + 1], "##start") == 0 &&
-	my_strcmp(input[i + 1], "##end") == 0; i++);
-	if  (parse->type != 0 && (my_strcmp(input[i], "##start") == 1
-	|| my_strcmp(input[i], "##end") == 1))
+	my_strcmp(input[i], "##start") == 1 ? parse->start += 1, parse->type = 1 : 0;
+	my_strcmp(input[i], "##end") == 1 ? parse->end += 1, parse->type = 2 : 0;
+	for (; parse->type != 0 && input[i][0] == '#' && input[i + 1] != NULL && my_strcmp(input[i + 1], "##start") == 0 && my_strcmp(input[i + 1], "##end") == 0; i++);
+	if  (parse->type != 0 && (my_strcmp(input[i], "##start") == 1 || my_strcmp(input[i], "##end") == 1))
 		return (84);
-	return (0);
+	return (i);
 }
 
 int check_dash(char **input, int i)
@@ -37,10 +32,8 @@ int parsing_file_input(file_t **file, parse_t *parse, char **input, int begin)
 {
 	int status = 0;
 
-	for (int i = begin; input[i] != NULL; i++) {
-		if (input[i][0] == '#')
-			parse->type = 0;
-		if (check_nb_type(parse, input, i) == 84)
+	for (int i = begin; input[i] != NULL; i++, parse->type = 0) {
+		if ((i = check_nb_type(parse, input, i)) == 84)
 			return (84);
 		check_dash(input, i) == 1 ? status = 1 : 0;
 		if (status == 0 && input[i][0] != '#') {
@@ -50,9 +43,6 @@ int parsing_file_input(file_t **file, parse_t *parse, char **input, int begin)
 		else if (status == 1 && input[i][0] != '#') {
 		 	if (compare_connections(*file, input, i) == 84)
 				return (84);
-			// IL SE PEUT QU'IL N'Y AI PAS DE RETURN 84 A FAIRE
-			// POUR LES CONNEXIONS
-			//compare_connections(*file, input, i);
 		}
 	}
 	if (parse->start != 1 || parse->end != 1)
@@ -74,7 +64,6 @@ int verif_file(file_t **file, parse_t *parse, char **input)
 	parsing_file_input(file, parse, input, ++i) == 84
 	|| compare_names(*file) == 84)
 		return (84);
-	printf("1\n");
-	print_link(*file);
+	//print_link(*file);
 	return (0);
 }

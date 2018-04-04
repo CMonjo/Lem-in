@@ -12,7 +12,8 @@ void print_link(file_t *file)
 	file_t *tmp = file;
 
 	while (tmp != NULL) {
-		my_printf("%s, x = %d et y = %d\n", tmp->name, tmp->pos.x, tmp->pos.y);
+		if (tmp->type == START)
+			my_printf("%s, x = %d et y = %d\n", tmp->name, tmp->pos.x, tmp->pos.y);
 		tmp = tmp->next;
 	}
 }
@@ -32,8 +33,8 @@ int compare_connections(file_t *file, char **input, int in)
 		if (my_strcmp(connect[0], tmp->name) == 1 ||
 		my_strcmp(connect[1], tmp->name) == 1)
 			i += 1;
-	printf("i: %d\n", i);
-//	if (i == 2)
+	//printf("i: %d\n", i);
+	//if (i == 2)
 		//add in list la connexion
 	return (0);
 }
