@@ -8,7 +8,7 @@
 #include "../../include/lemin.h"
 #include "../../include/my.h"
 
-room_t *create_room(char *name, pos_t pos)
+room_t *create_room(char *name, pos_t pos, type_t type)
 {
 	room_t *room = (room_t*)malloc(sizeof(room_t));
 
@@ -19,6 +19,7 @@ room_t *create_room(char *name, pos_t pos)
 	room->links = NULL;
 	room->nblinks = 0;
 	room->occuped = 0;
+	room->type = type;
 	return (room);
 }
 

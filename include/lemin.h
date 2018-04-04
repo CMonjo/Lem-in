@@ -41,7 +41,8 @@ struct room_s {
 	int		occuped;
 	char		*name;
 	int		nblinks;
-	pos_t		pos;
+	type_t	type;
+	pos_t	pos;
 	list_t	*links;
 };
 
