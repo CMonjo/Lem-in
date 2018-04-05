@@ -12,7 +12,6 @@ CFLAGS	=	-Wextra -W -Wall -I ./include/ -g3
 LIB	=	-L./lib/my/ -lmy -L./lib/list -llist
 
 SRC	=	src/main.c				\
-		src/input.c				\
 		src/error_handling/file_verif.c		\
 		src/error_handling/verif_name_x_y.c	\
 		src/error_handling/list_verif.c		\
@@ -20,7 +19,7 @@ SRC	=	src/main.c				\
 		src/map/struct_inits.c			\
 		src/map/room_tools.c			\
 		src/map/pathfinding.c			\
-		src/output/path.c
+		src/output.c
 
 OBJ	=	$(SRC:.c=.o)
 

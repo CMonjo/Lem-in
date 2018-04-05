@@ -19,6 +19,19 @@ parse_t *init_parse(void)
 	return (parse);
 }
 
+int create_map(list_t **rooms, parse_t *parse)
+{
+	char *gnl = my_read();
+	char **input = NULL;
+
+	if (!gnl)
+		return (84);
+	input = my_str_split(gnl, '\n');
+	if (!input || verif_file(rooms, parse, input) == 84)
+		return (84);
+	return (0);
+}
+
 int main(int ac, char **av)
 {
 	list_t *rooms = NULL;
@@ -39,8 +52,7 @@ int main(int ac, char **av)
 	if (paths == NULL)
 		return (84);
 	list_t *shortest = get_shortest_available_path(paths);
-	disp_path(shortest);
-	display_output_path(shortest, list_size(shortest), parse->nb_ant);
 	display_output(rooms, parse);
+	display_output_path(shortest, list_size(shortest), parse->nb_ant);
 	return (0);
 }
