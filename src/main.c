@@ -40,7 +40,7 @@ int main(int ac, char **av)
 		return (84);
 	list_t *shortest = get_shortest_available_path(paths);
 	disp_path(shortest);
-	display_output_path(shortest, 4, parse->nb_ant);
+	display_output_path(shortest, list_size(shortest), parse->nb_ant);
 	display_output(rooms, parse);
 	return (0);
 }
