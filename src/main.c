@@ -9,77 +9,55 @@
 
 void disp_path(list_t *path);
 
-room_t	*test_map(room_t *end)
+parse_t *init_parse(void)
 {
-	room_t *pleurope1 = create_room("PL. DE L'EUROPE T1", (pos_t){0, 0}, 0);
-	room_t *pleurope4 = create_room("PL. DE L'EUROPE T4", (pos_t){0, 0}, 0);
-	room_t *rives3 = create_room("RIVES DU LEZ T3", (pos_t){0, 0}, 0);
-	room_t *rives4 = create_room("RIVES DU LEZ T4", (pos_t){0, 0}, 0);
-	room_t *rives1 = create_room("RIVES DU LEZ T1", (pos_t){0, 0}, 0);
-	room_t *moulares1 = create_room("MOULARÈS (HÔTEL DE VILLE) T1", (pos_t){0, 0}, 0);
-	room_t *moulares3 = create_room("MOULARÈS (HÔTEL DE VILLE) T3", (pos_t){0, 0}, 0);
-	room_t *freche4 = create_room("GEORGES FRÊCHE - HÔTEL DE VILLE T4", (pos_t){0, 0}, 0);
-	//room_t *portmarianne1 = create_room("PORT MARIANNE T1", (pos_t){0, 0});
-	room_t *portmarianne3 = create_room("PORT MARIANNE T3", (pos_t){0, 0}, 0);
+	parse_t *parse = malloc(sizeof(parse_t));
 
-	//PL EUROPE
-	connect_room_to_room(pleurope1, rives1);
-	connect_room_to_room(pleurope1, pleurope4);
-	connect_room_to_room(pleurope4, rives4);
-
-	//RIVES
-	connect_room_to_room(rives3, moulares3);
-	connect_room_to_room(rives1, moulares1);
-	connect_room_to_room(rives1, rives3);
-	connect_room_to_room(rives1, rives4);
-	connect_room_to_room(rives3, rives4);
-	connect_room_to_room(rives4, freche4);
-
-	//MOULARES
-	connect_room_to_room(moulares3, portmarianne3);
-	connect_room_to_room(moulares1, end);
-	//connect_room_to_room(freche4, moulares1);
-	//onnect_room_to_room(freche4, moulares3);
-	connect_room_to_room(moulares1, moulares3);
-
-	connect_room_to_room(portmarianne3, end);
-
-	return (rives1);
+	parse->start = 0;
+	parse->end = 0;
+	parse->type = 0;
+	return (parse);
 }
 
 int main(int ac, char **av)
 {
 	list_t *rooms = NULL;
+	parse_t *parse;
+	room_t *start = NULL;
+	room_t *end = NULL;
+	list_t *pathsV2 = NULL;
+	list_t *paths = NULL;
+	list_t *pathscpy = NULL;
+
 	(void)av;
+	(void)pathsV2;
 	if (ac != 1)
 		return (84);
-
-	if (create_map(&rooms) == 84)
+	parse = init_parse();
+	if (create_map(&rooms, parse) == 84)
 		return (84);
-	room_t *start = get_start_room(rooms);
-	room_t *end = get_end_room(rooms);
-	// room_t *end = create_room("PORT MARIANNE T1", (pos_t){0, 0});
-	list_t *pathsV2 = NULL;
-	list_t *paths = get_all_paths(&paths, NULL, start, end);
-	list_t *pathscpy = paths;
-
+	start = get_start_room(rooms);
+	end = get_end_room(rooms);
+	paths = get_all_paths(&paths, NULL, start, end);
 	if (paths == NULL)
 		my_printf("PATHS NULL\n");
-	my_printf("\n§§§$$$--$$$§§§\n[%s -> %s]\nFOUND PATHS :\n", start->name, end->name);
-	for (; pathscpy != NULL; pathscpy = pathscpy->next) {
-		my_printf(" • ");
-		disp_path((list_t*)pathscpy->data);
-	}
-	my_printf("\n----\nSHORTEST:\n\n • ");
+	pathscpy = paths;
+	display_output(rooms, parse);
+	// my_printf("\n§§§$$$--$$$§§§\n[%s -> %s]\nFOUND PATHS :\n", start->name, end->name);
+	// for (; pathscpy != NULL; pathscpy = pathscpy->next) {
+	// 	my_printf(" • ");
+	// 	disp_path((list_t*)pathscpy->data);
+	// }
+	my_printf("\nSHORTEST:\n • ");
 	list_t *shortest = get_shortest_available_path(paths);
-	disp_path(shortest);
-	((room_t*)shortest->next->data)->occuped = 1;
-	my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
-	shortest = get_shortest_available_path(paths);
-	disp_path(shortest);
-	((room_t*)shortest->next->data)->occuped = 1;
-	my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
-	shortest = get_shortest_available_path(paths);
+	//disp_path(shortest);
+	//((room_t*)shortest->next->data)->occuped = 1;
+	// my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
+	// shortest = get_shortest_available_path(paths);
+	// disp_path(shortest);
+	// ((room_t*)shortest->next->data)->occuped = 1;
+	// my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
+	// shortest = get_shortest_available_path(paths);
 	disp_path(shortest);
 	return (0);
 }

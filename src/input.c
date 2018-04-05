@@ -25,22 +25,15 @@ void display_output(list_t *rooms, parse_t *parse)
 	}
 }
 
-int create_map(list_t **rooms)
+int create_map(list_t **rooms, parse_t *parse)
 {
-	//file_t *file = malloc(sizeof(file_t));
-	parse_t *parse = malloc(sizeof(parse_t));
 	char *gnl = my_read();
 	char **input = NULL;
 
-	parse->start = 0;
-	parse->end = 0;
-	parse->type = 0;
 	if (!gnl)
 		return (84);
 	input = my_str_split(gnl, '\n');
 	if (!input || verif_file(rooms, parse, input) == 84)
 		return (84);
-	//connect_rooms(input);
-	display_output(*rooms, parse);
 	return (0);
 }

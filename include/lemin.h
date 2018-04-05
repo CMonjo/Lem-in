@@ -79,7 +79,7 @@ list_t *get_shortest_available_path(list_t *paths);
 
 //ERROR HANDLING
 //main parsing
-int create_map(list_t **rooms);
+int create_map(list_t **rooms, parse_t *parse);
 
 //line tools
 int	line_is_comment(char *line);
@@ -109,5 +109,6 @@ int compare_names(list_t *);
 int compare_positions(list_t *rooms);
 void print_link(list_t *);
 int verif_file(list_t **, parse_t *parse, char **input);
+void display_output(list_t *rooms, parse_t *parse);
 
 #endif /* LEMIN_H_ */

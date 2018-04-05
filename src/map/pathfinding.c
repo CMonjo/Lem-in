@@ -60,7 +60,7 @@ list_t *get_all_paths(list_t **paths, list_t *act, room_t *to, room_t *end)
 	room_t *tmp_room = NULL;
 
 	list_append(&act, to);
-	disp_path(act);
+	//disp_path(act);
 	if (to == end) {
 		list_add(paths, act);
 		return (*paths);
