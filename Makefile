@@ -19,7 +19,8 @@ SRC	=	src/main.c				\
 		src/error_handling/line_tools.c		\
 		src/map/struct_inits.c			\
 		src/map/room_tools.c			\
-		src/map/pathfinding.c
+		src/map/pathfinding.c			\
+		src/output/path.c
 
 OBJ	=	$(SRC:.c=.o)
 

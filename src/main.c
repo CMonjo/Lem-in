@@ -48,7 +48,7 @@ int main(int ac, char **av)
 	// 	my_printf(" • ");
 	// 	disp_path((list_t*)pathscpy->data);
 	// }
-	my_printf("\nSHORTEST:\n • ");
+	// my_printf("\nSHORTEST:\n • ");
 	list_t *shortest = get_shortest_available_path(paths);
 	//disp_path(shortest);
 	//((room_t*)shortest->next->data)->occuped = 1;
@@ -58,6 +58,7 @@ int main(int ac, char **av)
 	// ((room_t*)shortest->next->data)->occuped = 1;
 	// my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
 	// shortest = get_shortest_available_path(paths);
-	disp_path(shortest);
+	display_output_path(shortest, 2, 4);
+	// disp_path(shortest);
 	return (0);
 }

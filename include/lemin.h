@@ -111,4 +111,7 @@ void print_link(list_t *);
 int verif_file(list_t **, parse_t *parse, char **input);
 void display_output(list_t *rooms, parse_t *parse);
 
+//OUTPUT
+void display_output_path(list_t *list_path, int len, int ants);
+
 #endif /* LEMIN_H_ */
