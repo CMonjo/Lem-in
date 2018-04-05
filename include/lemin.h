@@ -86,6 +86,7 @@ int	line_is_comment(char *line);
 char *my_clear_str(char *str);
 char *my_improved_strcat(char *dest, char *src);
 room_t *get_room_from_name(list_t *rooms, char *name);
+int check_dash(char **input, int i);
 
 int compare_connections(list_t *rooms, char **input, int in);
 list_t *get_shortest_available_path(list_t *paths);

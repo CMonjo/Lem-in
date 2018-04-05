@@ -9,6 +9,17 @@
 #include "../../include/my.h"
 #include "../../include/list.h"
 
+int check_dash(char **input, int i)
+{
+	if (input[i][0] == '#')
+		return (0);
+	for (int j = 0; input[i][j] != '\0'; j++) {
+		if (input[i][j] == '-')
+			return (1);
+	}
+	return (0);
+}
+
 char *my_clear_str(char *str)
 {
 	char *cleaned = NULL;

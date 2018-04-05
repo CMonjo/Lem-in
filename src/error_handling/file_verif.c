@@ -11,23 +11,17 @@
 
 int check_nb_type(parse_t *parse, char **input, int i)
 {
-	my_strcmp(input[i], "##start") == 1 ? parse->start += 1, parse->type = 1 : 0;
-	my_strcmp(input[i], "##end") == 1 ? parse->end += 1, parse->type = 2 : 0;
-	for (; parse->type != 0 && input[i][0] == '#' && input[i + 1] != NULL && my_strcmp(input[i + 1], "##start") == 0 && my_strcmp(input[i + 1], "##end") == 0; i++);
-	if  (parse->type != 0 && (my_strcmp(input[i], "##start") == 1 || my_strcmp(input[i], "##end") == 1))
+	my_strcmp(input[i], "##start") == 1 ?
+	parse->start += 1, parse->type = 1 : 0;
+	my_strcmp(input[i], "##end") == 1 ?
+	parse->end += 1, parse->type = 2 : 0;
+	for (; parse->type != 0 && input[i][0] == '#' && input[i + 1]
+	!= NULL && my_strcmp(input[i + 1], "##start") == 0
+	&& my_strcmp(input[i + 1], "##end") == 0; i++);
+	if  (parse->type != 0 && (my_strcmp(input[i], "##start") == 1
+	|| my_strcmp(input[i], "##end") == 1))
 		return (84);
 	return (i);
-}
-
-int check_dash(char **input, int i)
-{
-	if (input[i][0] == '#')
-		return (0);
-	for (int j = 0; input[i][j] != '\0'; j++) {
-		if (input[i][j] == '-')
-			return (1);
-	}
-	return (0);
 }
 
 int parsing_file_input(list_t **rooms, parse_t *parse, char **input, int begin)
