@@ -74,14 +74,13 @@ room_t *get_start_room(list_t *map);
 room_t *get_end_room(list_t *map);
 
 //PATHFINDING
-list_t *get_all_paths(list_t **paths, list_t *act, room_t *to, room_t *end);
+int get_all_paths(list_t **paths, list_t *act, room_t *to, room_t *end);
 list_t *get_shortest_available_path(list_t *paths);
 
 //ERROR HANDLING
-//main parsing
 int create_map(list_t **rooms, parse_t *parse);
 
-//line tools
+//LINE TOOLS
 int	line_is_comment(char *line);
 char *my_clear_str(char *str);
 char *my_improved_strcat(char *dest, char *src);

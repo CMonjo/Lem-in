@@ -38,9 +38,9 @@ list_t *get_shortest_available_path(list_t *paths)
 {
 	list_t *tmp = paths;
 	list_t *path = NULL;
+	list_t *tmppath = NULL;
 	int size = -1;
 	int tmpsize = 0;
-	list_t *tmppath = NULL;
 
 	for (; tmp != NULL; tmp = tmp->next) {
 		tmppath = (list_t*)tmp->data;
@@ -54,16 +54,15 @@ list_t *get_shortest_available_path(list_t *paths)
 	return (path);
 }
 
-list_t *get_all_paths(list_t **paths, list_t *act, room_t *to, room_t *end)
+int get_all_paths(list_t **paths, list_t *act, room_t *to, room_t *end)
 {
 	list_t *links = to->links;
 	room_t *tmp_room = NULL;
 
 	list_append(&act, to);
-	//disp_path(act);
 	if (to == end) {
 		list_add(paths, act);
-		return (*paths);
+		return (0);
 	}
 	for (; links != NULL; links = links->next) {
 		tmp_room = (room_t*)links->data;
@@ -71,5 +70,5 @@ list_t *get_all_paths(list_t **paths, list_t *act, room_t *to, room_t *end)
 			continue;
 		get_all_paths(paths, list_copy(act), tmp_room, end);
 	}
-	return (*paths);
+	return (0);
 }

@@ -22,15 +22,13 @@ parse_t *init_parse(void)
 int main(int ac, char **av)
 {
 	list_t *rooms = NULL;
-	parse_t *parse;
+	parse_t *parse = NULL;
 	room_t *start = NULL;
 	room_t *end = NULL;
-	list_t *pathsV2 = NULL;
 	list_t *paths = NULL;
 	list_t *pathscpy = NULL;
 
 	(void)av;
-	(void)pathsV2;
 	if (ac != 1)
 		return (84);
 	parse = init_parse();
@@ -38,11 +36,10 @@ int main(int ac, char **av)
 		return (84);
 	start = get_start_room(rooms);
 	end = get_end_room(rooms);
-	paths = get_all_paths(&paths, NULL, start, end);
+	get_all_paths(&paths, NULL, start, end);
 	if (paths == NULL)
-		my_printf("PATHS NULL\n");
+		return (84);
 	pathscpy = paths;
-	display_output(rooms, parse);
 	// my_printf("\n§§§$$$--$$$§§§\n[%s -> %s]\nFOUND PATHS :\n", start->name, end->name);
 	// for (; pathscpy != NULL; pathscpy = pathscpy->next) {
 	// 	my_printf(" • ");
@@ -50,14 +47,16 @@ int main(int ac, char **av)
 	// }
 	my_printf("\nSHORTEST:\n • ");
 	list_t *shortest = get_shortest_available_path(paths);
-	//disp_path(shortest);
-	//((room_t*)shortest->next->data)->occuped = 1;
-	// my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
-	// shortest = get_shortest_available_path(paths);
-	// disp_path(shortest);
-	// ((room_t*)shortest->next->data)->occuped = 1;
-	// my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
-	// shortest = get_shortest_available_path(paths);
 	disp_path(shortest);
+	((room_t*)shortest->next->data)->occuped = 1;
+	// my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
+	shortest = get_shortest_available_path(paths);
+	// disp_path(shortest);
+	((room_t*)shortest->next->data)->occuped = 1;
+	my_printf("\n\nSET AS OCCUPED. NEXT SHORTEST:\n\n • ");
+	shortest = get_shortest_available_path(paths);
+	disp_path(shortest);
+	my_printf("\n\n");
+	display_output(rooms, parse);
 	return (0);
 }
