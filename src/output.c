@@ -39,7 +39,7 @@ void display_output_path(list_t *list_path, int len, int nbr_ants)
 		for (int j = 0, ant = first_ant, room = first_room;
 		j < max && j <= i && ant < nbr_ants; j++, ant++, room--) {
 			my_printf("P%d-%s", ant + 1, path[room]);
-			(j + 1 < max && j + 1 <= i) ? my_putchar(' ') : 0;
+			(j + 1 < max && j + 1 <= i && ant + 1 < nbr_ants) ? my_putchar(' ') : 0;
 		}
 		(i >= len - 2) ? first_ant++ : 0;
 		(first_room < len - 2) ? first_room++ : 0;
