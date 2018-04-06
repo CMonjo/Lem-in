@@ -25,5 +25,8 @@
 	typedef struct anthill_s {
 		sfRectangleShape **rooms;
 		sfVertexArray **tunnels;
+		int ants;
+		sfSprite *sprite;
+		sfTexture *texture;
 	} anthill_t;
 #endif
