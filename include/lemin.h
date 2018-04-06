@@ -22,6 +22,7 @@
 	typedef struct room_s	room_t;
 	typedef struct pos_s	pos_t;
 	typedef struct path_s	path_t;
+	typedef struct connection_s	connection_t;
 	typedef struct parse_s	parse_t;
 	typedef enum type_s	type_t;
 
@@ -45,11 +46,17 @@
 		list_t *links;
 	};
 
+	struct connection_s {
+		char *to_room;
+		char *from_room;
+	};
+
 	struct parse_s {
 		int nb_ant;
 		int start;
 		int end;
 		int type;
+		list_t *connect;
 	};
 
 	struct path_s {
@@ -78,7 +85,8 @@
 	//ERROR HANDLING
 	int verif_file(list_t **, parse_t *parse, char **input);
 	int parsing_file_input(list_t **, parse_t *parse, char **input, int begin);
-	int compare_connections(list_t *rooms, char **input, int in);
+	int compare_connects(list_t *rooms, parse_t *parse, char **input, int in);
+	int compare_connections(list_t *rooms, parse_t *parse, char **input, int in);
 	int verif_room_name(list_t **, parse_t *parse, char **input, int i);
 	int compare_names(list_t *);
 

@@ -7,7 +7,7 @@
 
 CC	= gcc
 
-CFLAGS	=	-Wall -Wextra -W
+CFLAGS	=	-Wall -Wextra -W -g3
 
 SRC	=	$(wildcard *.c)
 

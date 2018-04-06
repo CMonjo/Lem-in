@@ -37,7 +37,7 @@ int parsing_file_input(list_t **rooms, parse_t *parse, char **input, int begin)
 				return (84);
 		}
 		else if (status == 1 && input[i][0] != '#') {
-		 	if (compare_connections(*rooms, input, i) == 84)
+		 	if (compare_connections(*rooms, parse, input, i) == 84)
 				return (84);
 		}
 	}

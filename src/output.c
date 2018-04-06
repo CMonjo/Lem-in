@@ -50,50 +50,27 @@ void display_output_path(list_t *list_path, int len, int nbr_ants)
 	free(path);
 }
 
-void display_rooms(list_t *tmp)
-{
-	room_t *room = NULL;
-	if (tmp)
-		display_rooms(tmp->next);
-	printf("1\n");
-	room = (room_t*)tmp->data;
-	printf("2\n");
-	if (room->type == MIDDLE)
-		my_printf("%s %d %d\n", room->name, room->pos.x, room->pos.y);
-}
-
 void display_output(list_t *rooms, parse_t *parse)
 {
 	room_t *room = NULL;
-	list_t *tmp_mid = rooms;
+	connection_t *connection = NULL;
 
 	my_printf("#number_of_ants\n%d\n", parse->nb_ant);
-	my_printf("#rooms\n##start\n");
+	my_printf("#rooms\n");
 	for (list_t *tmp = rooms; tmp != NULL; tmp = tmp->next) {
 		room = (room_t*)tmp->data;
-		if (room->type == START) {
-			my_printf("%s %d %d\n", room->name, room->pos.x, room->pos.y);
-			room = NULL;
-			break;
-		}
+		if (room->type == START)
+			my_printf("##start\n");
+		if (room->type == END)
+			my_printf("##end\n");
+		my_printf("%s %d %d\n", room->name, room->pos.x, room->pos.y);
 	}
-	for (list_t *tmp = rooms; tmp != NULL; tmp = tmp->next) {
-		room = (room_t*)tmp->data;
-		if (room->type == END) {
-			my_printf("##end\n%s %d %d\n", room->name, room->pos.x, room->pos.y);
-			room = NULL;
-			break;
-		}
-	}
-	for (list_t *tmp = rooms; tmp != NULL; tmp = tmp->next) {
-		room = (room_t*)tmp->data;
-		if (room->type == MIDDLE)
-			my_printf("%s %d %d\n", room->name, room->pos.x, room->pos.y);
-	}
-	//display_rooms(tmp_mid);
-	// for (; tmp_mid != NULL; tmp_mid = tmp_mid->next) {
-	// 	room = (room_t*)tmp_mid->data;
-	//
-	// }
 	my_printf("#tunnels\n");
+	for (list_t *tmp = parse->connect; tmp != NULL; tmp = tmp->next) {
+		connection = (connection_t*)tmp->data;
+		if (connection == NULL)
+			break;
+		my_printf("%s-%s\n", connection->from_room, connection->to_room);
+	}
+
 }
