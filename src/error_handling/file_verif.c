@@ -50,6 +50,7 @@ int verif_file(list_t **rooms, parse_t *parse, char **input)
 {
 	int i = 0;
 
+	parse->connect = NULL;
 	for (int clear = 0; input[clear] != NULL; clear++)
 		input[clear] = my_clear_str(input[clear]);
 	for (i = 0; input[i][0] == '#'; i++) {
