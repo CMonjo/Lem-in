@@ -11,7 +11,8 @@
 
 int check_dash(char *input)
 {
-	if (input == NULL || input[0] == '#' || input[0] == '\n' || input[0] == '\0')
+	if (input == NULL || input[0] == '#' ||
+	input[0] == '\n' || input[0] == '\0')
 		return (0);
 	for (int i = 0; input[i] != '\0'; i++) {
 		if (input[i] == '-')
@@ -24,7 +25,7 @@ char *my_clear_str(char *str)
 {
 	char *cleaned = NULL;
 	char littlestr[2] = "\0";
-	int	tmp = 0;
+	int tmp = 0;
 
 	for (int i = 0; str != NULL && str[i] != '\0'; i++) {
 		if ((str[i] == ' ' || str[i] == '\t') && !tmp)

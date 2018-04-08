@@ -54,7 +54,7 @@ void display_output_path(list_t *list_path, int len, int nbr_ants)
 void display_ant_rooms_tunnels(list_t *rooms, parse_t *parse)
 {
 	room_t *room = NULL;
-	connection_t *connection = NULL;
+	connection_t *co_room = NULL;
 	list_t *check = NULL;
 
 	my_printf("#number_of_ants\n%d\n", parse->nb_ant);
@@ -68,16 +68,18 @@ void display_ant_rooms_tunnels(list_t *rooms, parse_t *parse)
 	check = parse->connect;
 	check != NULL ? my_printf("#tunnels\n") : 0;
 	for (list_t *tmp = parse->connect; tmp != NULL; tmp = tmp->next) {
-		connection = (connection_t*)tmp->data;
-		if (connection == NULL)
+		co_room = (connection_t*)tmp->data;
+		if (co_room == NULL)
 			break;
-		my_printf("%s-%s\n", connection->from_room, connection->to_room);
+		my_printf("%s-%s\n", co_room->from_room, co_room->to_room);
 	}
 }
 
-void display_output(list_t *rooms, parse_t *parse, list_t *paths, list_t *shortest)
+void display_output(list_t *rooms, parse_t *parse, list_t *paths, list_t *path)
 {
 	display_ant_rooms_tunnels(rooms, parse);
 	if (paths != NULL && parse->error_parse == 0)
-		display_output_path(shortest, list_size(shortest), parse->nb_ant);
+		display_output_path(path,
+			list_size(path), parse->nb_ant);
+	parse->error_parse = parse->error_parse == 1 ? 84 : 0;
 }

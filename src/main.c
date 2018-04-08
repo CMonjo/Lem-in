@@ -7,8 +7,6 @@
 
 #include "../include/lemin.h"
 
-void disp_path(list_t *path);
-
 parse_t *init_parse(void)
 {
 	parse_t *parse = malloc(sizeof(parse_t));
@@ -19,18 +17,21 @@ parse_t *init_parse(void)
 	parse->end = 0;
 	parse->type = 0;
 	parse->error_parse = 0;
+	parse->status = 0;
 	return (parse);
 }
 
-int create_map(list_t **rooms, parse_t *parse)
+int create_map(list_t **rooms, parse_t *parse, char **av)
 {
 	char *gnl = my_read();
 	char **input = NULL;
 
+	(void)av;
 	if (gnl == NULL || gnl[0] == '\0' || gnl[0] == '\n')
 		return (84);
 	input = my_str_split(gnl, '\n');
-	if (input == NULL || input[0][0] == '\0' || verif_file(rooms, parse, input) == 84)
+	if (input == NULL || input[0][0] == '\0'
+	|| verif_file(rooms, parse, input) == 84)
 		return (84);
 	return (0);
 }
@@ -44,11 +45,10 @@ int main(int ac, char **av)
 	list_t *paths = NULL;
 	list_t *shortest = NULL;
 
-	(void)av;
 	if (ac != 1)
 		return (84);
 	parse = init_parse();
-	if (create_map(&rooms, parse) == 84)
+	if (create_map(&rooms, parse, av) == 84)
 		return (84);
 	start = get_start_room(rooms);
 	end = get_end_room(rooms);
@@ -57,8 +57,5 @@ int main(int ac, char **av)
 		shortest = get_shortest_available_path(paths);
 	}
 	display_output(rooms, parse, paths, shortest);
-	// if (paths != NULL && parse->error_parse == 0)
-	// 	display_output_path(shortest, list_size(shortest), parse->nb_ant);
-	parse->error_parse = parse->error_parse == 1 ? 84 : 0;
 	return (parse->error_parse);
 }
