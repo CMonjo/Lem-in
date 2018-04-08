@@ -7,7 +7,7 @@
 
 #include "proto.h"
 
-void display_ant(anthill_t *anthill)
+void display_ant(anthill_t *a)
 {
 	static int turn = 0;
 

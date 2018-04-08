@@ -5,10 +5,12 @@
 ** Main
 */
 
-#include "lemin.h"
+#include <stdlib.h>
 #include "graph.h"
 
-graph_t graph(list_t *rooms, parse_t *parse, list_t *paths)
+// graph_t graph(list_t *rooms, parse_t *parse, list_t *paths)
+
+graph_t *create_graph(void)
 {
 	graph_t *graph = malloc(sizeof(graph_t));
 

@@ -8,18 +8,20 @@
 #ifndef _GRAPH_H_
 #define _GRAPH_H_
 
-	struct rooms_graph_s {
+	typedef struct rooms_graph_s {
 		char *name;
 		int x;
 		int y;
-	}rooms_graph_t;
+	} rooms_graph_t;
 
-	struct graph_s {
+	typedef struct graph_s {
 		int nb_ant;
 		int nb_rooms;
 		int nb_tunnel;
 		int len;
 		int **connection;
-		room_t *rooms;
+		rooms_graph_t *rooms;
 	} graph_t;
+
+	graph_t *create_graph(void);
 #endif
