@@ -32,18 +32,13 @@ int parsing_file_input(list_t **rooms, parse_t *parse, char **input, int begin)
 		if ((i = check_nb_type(parse, input, i)) == 84)
 			return (84);
 		check_dash(input[i]) == 1 ? parse->status = 1 : 0;
-		if (parse->status == 0 && input[i][0] != '#') {
-			if (verif_room_name(rooms, parse, input, i) == 84) {
-				parse->error_parse = 1;
-				break;
-			}
-		}
-		else if (parse->status == 1 && input[i][0] != '#') {
-			if (compare_connections(*rooms, parse, input[i], 0) == 84) {
-				parse->error_parse = 1;
-				break;
-			}
-		}
+		if (parse->status == 0 && input[i][0] != '#')
+			verif_room_name(rooms, parse, input, i) == 84 ?
+			parse->error_parse = 1 : 0;
+		else if (parse->status == 1 && input[i][0] != '#'
+		&& parse->error_parse != 1)
+			compare_connections(*rooms, parse, input[i], 0)
+			== 84 ? parse->error_parse = 1 : 0;
 	}
 	return (0);
 }
