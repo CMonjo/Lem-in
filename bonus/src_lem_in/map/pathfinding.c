@@ -8,6 +8,20 @@
 #include "../../include/lemin.h"
 #include "../../include/my.h"
 
+void disp_path(list_t *path)
+{
+	list_t *_tmp = path;
+	room_t *room = NULL;
+
+	for (; _tmp != NULL; _tmp = _tmp->next) {
+		if (room != NULL)
+			my_printf(" -> ");
+		room = (room_t*)_tmp->data;
+		my_printf("%s", room->name);
+	}
+	my_printf("\n");
+}
+
 int	is_path_occuped(list_t *path, int size)
 {
 	room_t *room = NULL;
@@ -32,7 +46,7 @@ list_t *get_shortest_available_path(list_t *paths)
 		tmppath = (list_t*)tmp->data;
 		tmpsize = list_size(tmppath);
 		if ((size == -1 || tmpsize < size) && tmpsize > 0 &&
-		!is_path_occuped(tmppath, tmpsize)) {
+			!is_path_occuped(tmppath, tmpsize)) {
 				size = tmpsize;
 				path = tmppath;
 			}

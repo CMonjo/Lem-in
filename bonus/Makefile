@@ -8,12 +8,12 @@
 CC		=	gcc
 
 SRC		= 	./src/main.c		\
+			./src/graph.c		\
 			./src/window/event.c	\
 			./src/window/init.c	\
 			./src/anthill/create.c	\
 			./src/anthill/display.c	\
 			./src/anthill/free.c
-
 
 OBJ		=	$(SRC:.c=.o)
 
