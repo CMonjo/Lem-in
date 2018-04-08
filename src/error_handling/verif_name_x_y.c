@@ -73,6 +73,10 @@ int verif_room_name(list_t **rooms, parse_t *parse, char **input, int i)
 	y = recup_y(input, i, j);
 	if (x == -1 || y == -1 || name == NULL || str_num_and_alpha(name) == 1)
 		return (84);
+	if (compare_names(*rooms, name) == 84 || compare_positions(*rooms, x, y) == 84) {
+		parse->error_parse = 1;
+		return (84);
+	}
 	list_append(rooms, create_room(name, (pos_t){x, y}, parse->type));
 	return (0);
 }

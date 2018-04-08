@@ -9,12 +9,12 @@
 #include "../../include/my.h"
 #include "../../include/list.h"
 
-int check_dash(char **input, int i)
+int check_dash(char *input)
 {
-	if (input[i][0] == '#')
+	if (input == NULL || input[0] == '#' || input[0] == '\n' || input[0] == '\0')
 		return (0);
-	for (int j = 0; input[i][j] != '\0'; j++) {
-		if (input[i][j] == '-')
+	for (int i = 0; input[i] != '\0'; i++) {
+		if (input[i] == '-')
 			return (1);
 	}
 	return (0);

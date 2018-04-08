@@ -53,6 +53,7 @@
 
 	struct parse_s {
 		int nb_ant;
+		int error_parse;
 		int start;
 		int end;
 		int type;
@@ -72,7 +73,7 @@
 
 	//ROOM CONNECT
 	int connect_room_to_room(room_t *from_room, room_t *to_room);
-	int compare_positions(list_t *rooms);
+	int compare_positions(list_t *rooms, int x, int y);
 
 	//PATHFINDING
 	int get_all_paths(list_t **paths, list_t *act, room_t *to, room_t *end);
@@ -88,16 +89,16 @@
 	int compare_connects(list_t *rooms, parse_t *parse, char **input, int in);
 	int compare_connections(list_t *rooms, parse_t *parse, char **input, int in);
 	int verif_room_name(list_t **, parse_t *parse, char **input, int i);
-	int compare_names(list_t *);
+	int compare_names(list_t *, char *);
 
 	//LINE TOOLS
 	int line_is_comment(char *line);
 	char *my_clear_str(char *str);
 	char *my_improved_strcat(char *dest, char *src);
 	room_t *get_room_from_name(list_t *rooms, char *name);
-	int check_dash(char **input, int i);
+	int check_dash(char *input);
 
 	//OUTPUT
 	void display_output_path(list_t *list_path, int len, int ants);
-	void display_output(list_t *rooms, parse_t *parse);
+	void display_output(list_t *rooms, parse_t *parse, list_t *paths, list_t *shortest);
 #endif /* LEMIN_H_ */

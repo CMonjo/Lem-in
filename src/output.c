@@ -5,8 +5,8 @@
 ** path finding
 */
 
-#include "../include/lemin.h"
-#include "../include/my.h"
+#include "lemin.h"
+#include "my.h"
 
 char **stock_path(list_t *path, int len)
 {
@@ -39,7 +39,8 @@ void display_output_path(list_t *list_path, int len, int nbr_ants)
 		for (int j = 0, ant = first_ant, room = first_room;
 		j < max && j <= i && ant < nbr_ants; j++, ant++, room--) {
 			my_printf("P%d-%s", ant + 1, path[room]);
-			(j + 1 < max && j + 1 <= i && ant + 1 < nbr_ants) ? my_putchar(' ') : 0;
+			(j + 1 < max && j + 1 <= i && ant + 1 < nbr_ants) ?
+			my_putchar(' ') : 0;
 		}
 		(i >= len - 2) ? first_ant++ : 0;
 		(first_room < len - 2) ? first_room++ : 0;
@@ -50,27 +51,33 @@ void display_output_path(list_t *list_path, int len, int nbr_ants)
 	free(path);
 }
 
-void display_output(list_t *rooms, parse_t *parse)
+void display_ant_rooms_tunnels(list_t *rooms, parse_t *parse)
 {
 	room_t *room = NULL;
 	connection_t *connection = NULL;
+	list_t *check = NULL;
 
 	my_printf("#number_of_ants\n%d\n", parse->nb_ant);
-	my_printf("#rooms\n");
+	rooms != NULL ? my_printf("#rooms\n") : 0;
 	for (list_t *tmp = rooms; tmp != NULL; tmp = tmp->next) {
 		room = (room_t*)tmp->data;
-		if (room->type == START)
-			my_printf("##start\n");
-		if (room->type == END)
-			my_printf("##end\n");
+		room->type == START ? my_printf("##start\n") : 0;
+		room->type == END ? my_printf("##end\n") : 0;
 		my_printf("%s %d %d\n", room->name, room->pos.x, room->pos.y);
 	}
-	my_printf("#tunnels\n");
+	check = parse->connect;
+	check != NULL ? my_printf("#tunnels\n") : 0;
 	for (list_t *tmp = parse->connect; tmp != NULL; tmp = tmp->next) {
 		connection = (connection_t*)tmp->data;
 		if (connection == NULL)
 			break;
 		my_printf("%s-%s\n", connection->from_room, connection->to_room);
 	}
+}
 
+void display_output(list_t *rooms, parse_t *parse, list_t *paths, list_t *shortest)
+{
+	display_ant_rooms_tunnels(rooms, parse);
+	if (paths != NULL && parse->error_parse == 0)
+		display_output_path(shortest, list_size(shortest), parse->nb_ant);
 }

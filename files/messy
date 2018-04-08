@@ -11,6 +11,7 @@
 room2 16 7
 room4 1 1
 room1 1 2
+room3 1 22
 ##end
 
 roomEnd 9 3
@@ -41,5 +42,4 @@ roomStart-room2
 room2-room4
 room1-room4
 room3-room2
-rrrrr-rrrrs
 room0-roomEnd
