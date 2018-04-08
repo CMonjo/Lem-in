@@ -77,7 +77,8 @@ void display_ant_rooms_tunnels(list_t *rooms, parse_t *parse)
 
 void display_output(list_t *rooms, parse_t *parse, list_t *paths, list_t *path)
 {
-	display_ant_rooms_tunnels(rooms, parse);
+	if (parse->nb_ant > 0)
+		display_ant_rooms_tunnels(rooms, parse);
 	if (paths != NULL && parse->error_parse == 0)
 		display_output_path(path,
 			list_size(path), parse->nb_ant);
