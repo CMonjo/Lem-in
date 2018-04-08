@@ -33,9 +33,9 @@ list_t *get_shortest_available_path(list_t *paths)
 		tmpsize = list_size(tmppath);
 		if ((size == -1 || tmpsize < size) && tmpsize > 0 &&
 		!is_path_occuped(tmppath, tmpsize)) {
-				size = tmpsize;
-				path = tmppath;
-			}
+			size = tmpsize;
+			path = tmppath;
+		}
 	}
 	return (path);
 }

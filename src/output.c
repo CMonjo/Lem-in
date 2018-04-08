@@ -80,7 +80,6 @@ void display_output(list_t *rooms, parse_t *parse, list_t *paths, list_t *path)
 	if (parse->nb_ant > 0)
 		display_ant_rooms_tunnels(rooms, parse);
 	if (paths != NULL && parse->error_parse == 0)
-		display_output_path(path,
-			list_size(path), parse->nb_ant);
+		display_output_path(path, list_size(path), parse->nb_ant);
 	parse->error_parse = parse->error_parse == 1 ? 84 : 0;
 }

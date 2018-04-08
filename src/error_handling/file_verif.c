@@ -28,7 +28,7 @@ int check_nb_type(parse_t *parse, char **input, int i)
 int parsing_file_input(list_t **rooms, parse_t *parse, char **input, int begin)
 {
 	for (int i = begin; input[i] != NULL &&
-		parse->error_parse != 1; i++, parse->type = 0) {
+	parse->error_parse != 1; i++, parse->type = 0) {
 		if ((i = check_nb_type(parse, input, i)) == 84)
 			return (84);
 		check_dash(input[i]) == 1 ? parse->status = 1 : 0;
