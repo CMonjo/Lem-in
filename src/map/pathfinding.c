@@ -8,7 +8,7 @@
 #include "../../include/lemin.h"
 #include "../../include/my.h"
 
-int	is_path_occuped(list_t *path, int size)
+int is_path_occuped(list_t *path, int size)
 {
 	room_t *room = NULL;
 	int occuped = 0;
