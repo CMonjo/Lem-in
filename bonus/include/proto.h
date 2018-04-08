@@ -5,6 +5,7 @@
 ** proto
 */
 
+#include "graph.h"
 #include "struct.h"
 
 #ifndef _PROTO_H_
@@ -27,8 +28,8 @@
 	void event_gestion(window_t *window);
 
 	//ANTHILL
-	anthill_t *create_anthill(void);
+	anthill_t *create_anthill(graph_t *graph);
 	void free_anthill(anthill_t *anthill);
-	void display_anthill(window_t *w, anthill_t *a);
+	void display_anthill(window_t *w, anthill_t *a, graph_t *graph);
 
 #endif

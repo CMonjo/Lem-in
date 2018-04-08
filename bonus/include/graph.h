@@ -5,6 +5,9 @@
 ** lemin header
 */
 
+#include <SFML/Graphics.h>
+#include <SFML/Audio.h>
+
 #ifndef _GRAPH_H_
 #define _GRAPH_H_
 
@@ -19,8 +22,11 @@
 		int nb_rooms;
 		int nb_tunnel;
 		int len;
-		int **connection;
+		int **tunnels;
+		sfVector2f pos_start;
+		sfVector2f pos_end;
 		rooms_graph_t *rooms;
+		char ***moves;
 	} graph_t;
 
 	graph_t *create_graph(void);

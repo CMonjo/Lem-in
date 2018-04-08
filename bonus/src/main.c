@@ -20,14 +20,14 @@ void free_window(window_t *window)
 int main(int ac, char **av)
 {
 	window_t *window = init_window();
-	anthill_t *anthill = create_anthill();
 	graph_t *graph = create_graph();
+	anthill_t *anthill = create_anthill(graph);
 
 	if (!window || ac != ac || av != av)
 		return (84);
 	while (sfRenderWindow_isOpen(window->window)) {
 		event_gestion(window);
-		display_anthill(window, anthill);
+		display_anthill(window, anthill, graph);
 		sfRenderWindow_display(window->window);
 	}
 	free_window(window);

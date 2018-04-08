@@ -26,6 +26,7 @@
 		sfRectangleShape **rooms;
 		sfVertexArray **tunnels;
 		char ***moves;
+		float size;
 		int ants;
 		int len;
 		sfSprite *sprite;

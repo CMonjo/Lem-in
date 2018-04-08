@@ -17,23 +17,37 @@ graph_t *create_graph(void)
 	graph->nb_ant = 10;
 	graph->nb_rooms = 4;
 	graph->nb_tunnel = 5;
-	graph->rooms = malloc(sizeof(room_graph_t) * (graph->nb_rooms + 1));
-	// graph->len = list_size(get_shortest_available_path(paths));
+	graph->rooms = malloc(sizeof(rooms_graph_t) * graph->nb_rooms);
 	graph->len = 3;
 	for (int i = 0; i < graph->nb_rooms; i++) {
-		graph->rooms[i].name = itoa(i);
-		graph->rooms[i].x = i * 10;
-		graph->rooms[i].y = i * 5;
+		graph->rooms[i].name = "A";
+		graph->rooms[i].x = rand() % 1600;
+		graph->rooms[i].y = rand() % 900;
 	}
-	graph->romms[graph->nb_rooms] = NULL;
-	graph->connection = malloc(sizeof(int *) * graph->nb_rooms);
-	for (int i = 0; i < graph->nb_rooms; i++)
-		graph->nb_rooms[i] = malloc(sizeof(int) * 4);
-	graph->connection[0] = {grap->rooms[0].x, grap->rooms[0].y, grap->rooms[1].x, grap->rooms[1].y};
-	graph->connection[1] = {grap->rooms[1].x, grap->rooms[1].y, grap->rooms[2].x, grap->rooms[2].y};
-	graph->connection[2] = {grap->rooms[2].x, grap->rooms[2].y, grap->rooms[3].x, grap->rooms[3].y};
-	graph->connection[3] = {grap->rooms[3].x, grap->rooms[3].y, grap->rooms[1].x, grap->rooms[1].y};
-	graph->connection[3] = {grap->rooms[2].x, grap->rooms[2].y, grap->rooms[0].x, grap->rooms[0].y};
-
+	graph->pos_start = (sfVector2f){graph->rooms[0].x, graph->rooms[0].y};
+	graph->pos_end = (sfVector2f){graph->rooms[3].x, graph->rooms[3].y};
+	graph->tunnels = malloc(sizeof(int *) * graph->nb_tunnel);
+	for (int i = 0; i < graph->nb_tunnel; i++)
+		graph->tunnels[i] = malloc(sizeof(int) * 5);
+	graph->tunnels[0][0] = graph->rooms[0].x;
+	graph->tunnels[0][1] = graph->rooms[0].y;
+	graph->tunnels[0][2] = graph->rooms[1].x;
+	graph->tunnels[0][3] = graph->rooms[1].y;
+	graph->tunnels[1][0] = graph->rooms[1].x;
+	graph->tunnels[1][1] = graph->rooms[1].y;
+	graph->tunnels[1][2] = graph->rooms[2].x;
+	graph->tunnels[1][3] = graph->rooms[2].y;
+	graph->tunnels[2][0] = graph->rooms[2].x;
+	graph->tunnels[2][1] = graph->rooms[2].y;
+	graph->tunnels[2][2] = graph->rooms[3].x;
+	graph->tunnels[2][3] = graph->rooms[3].y;
+	graph->tunnels[3][0] = graph->rooms[0].x;
+	graph->tunnels[3][1] = graph->rooms[0].y;
+	graph->tunnels[3][2] = graph->rooms[3].x;
+	graph->tunnels[3][3] = graph->rooms[3].y;
+	graph->tunnels[4][0] = graph->rooms[1].x;
+	graph->tunnels[4][1] = graph->rooms[1].y;
+	graph->tunnels[4][2] = graph->rooms[3].x;
+	graph->tunnels[4][3] = graph->rooms[3].y;
 	return (graph);
 }
