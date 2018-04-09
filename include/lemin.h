@@ -79,15 +79,19 @@
 	//FILL INPUT
 	int create_map(list_t **rooms, parse_t *parse, char **av);
 	room_t *create_room(char *name, pos_t pos, type_t type);
-	int fill_connection(list_t *rooms, parse_t *parse, char **connect, int i);
+	int fill_connection(list_t *rooms, parse_t *parse,
+		char **connect, int i);
 	int connect_room_to_room(room_t *from_room, room_t *to_room);
 	int compare_positions(list_t *rooms, int x, int y);
 
 	//ERROR HANDLING
 	int verif_file(list_t **, parse_t *parse, char **input);
-	int parsing_file_input(list_t **, parse_t *parse, char **input, int begin);
-	int compare_connects(list_t *rooms, parse_t *parse, char **input, int in);
-	int compare_connections(list_t *rooms, parse_t *parse, char *input, int i);
+	int parsing_file_input(list_t **, parse_t *parse,
+		char **input, int begin);
+	int compare_connects(list_t *rooms, parse_t *parse,
+		char **input, int in);
+	int compare_connections(list_t *rooms, parse_t *parse,
+		char *input, int i);
 	int verif_room_name(list_t **, parse_t *parse, char **input, int i);
 	int compare_names(list_t *, char *);
 
@@ -100,5 +104,6 @@
 
 	//OUTPUT
 	void display_output_path(list_t *list_path, int len, int ants);
-	void display_output(list_t *rooms, parse_t *parse, list_t *paths, list_t *shortest);
+	void display_output(list_t *rooms, parse_t *parse, list_t
+		*paths, list_t *shortest);
 #endif /* LEMIN_H_ */
