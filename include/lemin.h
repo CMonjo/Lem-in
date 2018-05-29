@@ -73,25 +73,26 @@
 	list_t *get_shortest_available_path(list_t *paths);
 
 	//PATHFINDING
-	int get_all_paths(list_t **paths, list_t *act, room_t *to, room_t *end);
+	int get_all_paths(list_t **paths, list_t *act, room_t *to,
+	room_t *end);
 	list_t *get_shortest_available_path(list_t *paths);
 
 	//FILL INPUT
 	int create_map(list_t **rooms, parse_t *parse, char **av);
 	room_t *create_room(char *name, pos_t pos, type_t type);
 	int fill_connection(list_t *rooms, parse_t *parse,
-		char **connect, int i);
+	char **connect, int i);
 	int connect_room_to_room(room_t *from_room, room_t *to_room);
 	int compare_positions(list_t *rooms, int x, int y);
 
 	//ERROR HANDLING
 	int verif_file(list_t **, parse_t *parse, char **input);
 	int parsing_file_input(list_t **, parse_t *parse,
-		char **input, int begin);
+	char **input, int begin);
 	int compare_connects(list_t *rooms, parse_t *parse,
-		char **input, int in);
+	char **input, int in);
 	int compare_connections(list_t *rooms, parse_t *parse,
-		char *input, int i);
+	char *input, int i);
 	int verif_room_name(list_t **, parse_t *parse, char **input, int i);
 	int compare_names(list_t *, char *);
 
